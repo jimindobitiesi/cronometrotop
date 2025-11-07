@@ -4,29 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Lux Synapse • Treinos Essenciais</title>
-  
   <meta name="description" content="Lux Synapse: Seu app de treino avançado com rastreamento de séries." />
   <meta name="theme-color" content="#0b0c0d" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7v6c0 5 4 9 10 9s10-4 10-9V7l-10-5z' fill='%23caa76e'/%3E%3C/svg%3E" type="image/svg+xml" />
-  
   <style>
-    /* O CSS é mantido do código anterior */
     :root{
       --bg:#0b0c0d; --card:#0f1112; --muted:#9aa3ab; --accent:#caa76e; --glass: rgba(255,255,255,0.04); --radius:14px; --success:#27ae60; --danger:#e74c3c; --warn:#f39c12; font-family: Inter, Roboto, system-ui, -apple-system, 'Segoe UI', Arial; color-scheme: dark;
     }
     [data-theme='light']{ --bg:#f6f7f8; --card:#ffffff; --muted:#6b7280; --accent:#6b4f2b; --glass: rgba(0,0,0,0.03); color-scheme: light }
     html,body{height:100%;background:linear-gradient(180deg,var(--bg),#0d0e10);margin:0;padding:0;color:var(--muted);-webkit-font-smoothing:antialiased}
-    
-    /* === AJUSTE DE LAYOUT 1/2: padding-bottom AUMENTADO PARA GARANTIR ESPAÇO PARA ROLAGEM === */
     .app{max-width:920px;margin:0 auto;padding:16px;padding-bottom:250px;box-sizing:border-box}
-    
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#161718 0%, #1f2122 60%);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,0.02)}
     .logo svg{fill:var(--accent)}
     h1{font-size:16px;margin:0;color:var(--accent)}
     .subtitle{color:var(--muted);font-size:12px}
-
     .card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));border-radius:var(--radius);padding:14px;margin-bottom:12px;box-shadow:0 6px 18px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,0.03);color:inherit}
     .row{display:flex;gap:12px;align-items:center}
     .exercise{display:flex;justify-content:space-between;align-items:center;padding:10px 8px;border-radius:12px;background:var(--glass);margin-bottom:8px}
@@ -34,34 +27,22 @@
     .badge{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:12px;color:var(--muted)}
     .ex-title{font-size:14px;color:inherit}
     .ex-meta{color:var(--muted);font-size:12px}
-
-    /* === AJUSTE DE LAYOUT 2/2: Scroll na lista de exercícios com mais altura === */
-    #exerciseList {
-        max-height: 350px; /* Aumentado para 350px */
-        overflow-y: auto; 
-        padding-right: 8px; 
-    }
-
+    #exerciseList { max-height: 350px; overflow-y: auto; padding-right: 8px; }
     .controls{display:flex;gap:8px;align-items:center}
     button.control{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:10px;color:var(--accent);font-weight:700}
     button.ghost{background:transparent;border:0;color:var(--muted);padding:8px}
-
     .timer-panel{display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px;border-radius:14px;text-align:center}
     .big-time{font-size:44px;font-weight:800;letter-spacing:1px;color:var(--accent)}
     .small{color:var(--muted);font-size:13px}
-    
     #setIndicator {font-size: 18px; font-weight: 700; color: var(--accent); margin-top: 8px;}
     #setInputs {display:flex;gap:12px;align-items:center;margin-top:12px}
-
     .footer{position:fixed;left:0;right:0;bottom:0;background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.9));backdrop-filter:blur(6px);padding:12px;border-top:1px solid rgba(255,255,255,0.02)}
     .nav{max-width:920px;margin:0 auto;display:flex;gap:8px}
     .nav button{flex:1;padding:12px;border-radius:12px;border:0;font-weight:700}
-
     .modal{position:fixed;inset:0;display:none;align-items:flex-end;z-index:1000}
     .modal.open{display:flex}
     .sheet{width:100%;background:linear-gradient(180deg,#0b0c0d,#0d0e0f);padding:16px;border-top-left-radius:16px;border-top-right-radius:16px}
     .workout-btn{display:block;width:100%;text-align:left;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);margin-bottom:8px;background:transparent;color:inherit}
-
     .small-input{width:72px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
     .muted{color:var(--muted)}
     .actions-row{display:flex;gap:8px;flex-wrap:wrap}
@@ -70,7 +51,8 @@
     .library-item {background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05);}
     .library-item-content {display: flex; align-items: center; gap: 12px;}
     .library-item-icon {font-size: 24px;}
-    @media(min-width:720px){.app{padding:28px; padding-bottom: 250px;}} /* Ajustando para telas maiores também */
+    @media(min-width:720px){.app{padding:28px; padding-bottom: 250px;}}
+    .exercise.active { outline: 2px solid var(--accent); background: rgba(202,167,110,0.08); }
   </style>
 </head>
 <body data-theme="dark">
@@ -188,6 +170,823 @@
     </div>
   </div>
 
+  <div class="footer">
+    <div class="nav">
+      <button id="prevExerciseFooter">◀ Anterior</button>
+      <button id="nextExerciseFooter">Próximo ▶</button>
+    </div>
+  </div>
+
+<script src="https://unpkg.com/idb-keyval@6.2.0/dist/umd/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/umd/chart.umd.min.js"></script>
+
+<script>
+// Adiciona o "ouvinte" de evento
+window.addEventListener('DOMContentLoaded', () => {
+    const STORAGE_KEYS = {
+        WORKOUTS: 'workouts',
+        HISTORY: 'history',
+        PRS: 'prs',
+        CURRENT_WORKOUT: 'currentWorkoutName',
+        THEME: 'theme',
+        LOOP_MODE: 'loopMode',
+        CALENDAR: 'calendar'
+    };
+
+    const DEFAULT_WORKOUTS = {
+      '🟥 TREINO A (Peito/Tríceps/Frontal)': [
+        {type: 'standard', id:'supino-reto-barra', title:'Supino reto com barra', sets: 4, reps:'10-12', rest:90, weight:20},
+        {type: 'standard', id:'supino-inclinado-halter', title:'Supino inclinado com halteres', sets: 3, reps:'12-15', rest:60, weight:10},
+        {type: 'standard', id:'flexao-braco', title:'Flexão de braço (militar/pés elevados)', sets: 3, reps:'Falha', rest:52, weight:0},
+        {type: 'standard', id:'triceps-testa', title:'Tríceps testa com barra/halter', sets: 3, reps:'10-12', rest:60, weight:8},
+        {type: 'standard', id:'mergulho-bancos', title:'Mergulho entre bancos/cadeiras', sets: 3, reps:'Falha', rest:60, weight:0},
+        {type: 'standard', id:'desenvolvimento-militar', title:'Desenvolvimento militar (barra ou halteres)', sets: 4, reps:'10-12', rest:60, weight:10},
+        {type: 'standard', id:'elevacao-frontal', title:'Elevação frontal com halteres', sets: 3, reps:'12-15', rest:45, weight:5},
+      ],
+      '🟦 TREINO B (Costas/Bíceps/Lateral-Post)': [
+        {type: 'standard', id:'remada-curvada-barra', title:'Remada curvada com barra', sets: 4, reps:'10-12', rest:90, weight:20},
+        {type: 'standard', id:'remada-unilateral-halter', title:'Remada unilateral com halter', sets: 3, reps:'12-15 por lado', rest:60, weight:10},
+        {type: 'standard', id:'barra-fixa', title:'Barra fixa (ou negativas)', sets: 4, reps:'Falha', rest:90, weight:0},
+        {type: 'standard', id:'rosca-direta', title:'Rosca direta com barra', sets: 3, reps:'10-12', rest:60, weight:10},
+        {type: 'standard', id:'rosca-martelo', title:'Rosca martelo com halteres', sets: 3, reps:'12', rest:45, weight:6},
+        {type: 'standard', id:'elevacao-lateral', title:'Elevação lateral com halteres', sets: 3, reps:'12-15', rest:37, weight:5},
+        {type: 'standard', id:'remada-alta-inclinada', title:'Remada alta inclinada (substitui elevação posterior)', sets: 3, reps:'12-15', rest:52, weight:8},
+      ],
+      '🟩 TREINO C (Pernas/Core/Panturrilha)': [
+        {type: 'standard', id:'agachamento-barra', title:'Agachamento com barra', sets: 4, reps:'15', rest:90, weight:20},
+        {type: 'standard', id:'agachamento-bulgaro', title:'Agachamento búlgaro/afundo com halteres', sets: 3, reps:'12 por perna', rest:60, weight:8},
+        {type: 'standard', id:'stiff-barra', title:'Stiff com barra', sets: 4, reps:'12-15', rest:60, weight:20},
+        {type: 'standard', id:'panturrilha-em-pe', title:'Elevação em pé com barra ou halteres', sets: 4, reps:'20-25', rest:45, weight:15},
+        {type: 'standard', id:'panturrilha-unilateral', title:'Elevação unilateral com halter', sets: 3, reps:'15-20 por perna', rest:37, weight:5},
+        {type: 'standard', id:'panturrilha-sentada-improvisada', title:'Panturrilha sentada improvisada', sets: 3, reps:'25-30', rest:30, weight:15},
+        {type: 'standard', id:'isometria-panturrilha', title:'Isometria na ponta dos pés', sets: 2, reps:'30-45s', rest:30, weight:0},
+        {type: 'standard', id:'elevacao-pernas', title:'Elevação de pernas deitado', sets: 3, reps:'15', rest:30, weight:0},
+        {type: 'standard', id:'crunch-halter', title:'Crunch com halter no peito', sets: 3, reps:'20', rest:30, weight:5},
+        {type: 'standard', id:'prancha-isométrica', title:'Prancha isométrica', sets: 3, reps:'45-60s', rest:30, weight:0},
+      ]
+    };
+
+    const { get, set } = idbKeyval;
+
+    async function loadAsync(key, fallback){
+        try {
+            const v = await get(key);
+            return v !== undefined ? v : fallback;
+        } catch(e){
+            console.warn('IDB falhou, tentando localStorage', e);
+            try {
+                const ls = localStorage.getItem(key);
+                return ls ? JSON.parse(ls) : fallback;
+            } catch(err) {
+                return fallback;
+            }
+        }
+    }
+    async function saveAsync(key, val){
+        try {
+            await set(key, val);
+        } catch(e){
+            console.warn('IDB save falhou, salvando em localStorage', e);
+            try { localStorage.setItem(key, JSON.stringify(val)); } catch(err){}
+        }
+    }
+    function load(key, fallback){ try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch(e){ return fallback; } }
+    function save(key, val){ try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){} }
+
+    // State
+    let WORKOUTS = {};
+    let history = [];
+    let prs = {};
+    let calendar = {};
+    let currentWorkout = '';
+    let currentIndex = 0;
+    let currentSet = 1;
+    let appMode = 'work';
+    let currentExerciseHistory = [];
+    let timer = null;
+    let remaining = 0;
+    let running = false;
+    let loopMode = false;
+    let progressChartInstance = null;
+
+    // DOM refs
+    const modal = document.getElementById('modal'), libraryModal = document.getElementById('libraryModal');
+    const openMenu = document.getElementById('openMenu'), closeMenu = document.getElementById('closeMenu');
+    const openLibrary = document.getElementById('openLibrary'), closeLibrary = document.getElementById('closeLibrary');
+    const workoutButtons = document.getElementById('workoutButtons');
+    const currentWorkoutName = document.getElementById('currentWorkoutName'), currentExerciseTitle = document.getElementById('currentExerciseTitle'), currentExerciseMeta = document.getElementById('currentExerciseMeta');
+    const timerDisplay = document.getElementById('timerDisplay'), timerLabel = document.getElementById('timerLabel'), startPauseBtn = document.getElementById('startPauseBtn');
+    const setIndicator = document.getElementById('setIndicator'), logWeightInput = document.getElementById('logWeightInput'), logRepsInput = document.getElementById('logRepsInput');
+    const prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn'), resetBtn = document.getElementById('resetBtn');
+    const exerciseList = document.getElementById('exerciseList');
+    const prevFooter = document.getElementById('prevExerciseFooter'), nextFooter = document.getElementById('nextExerciseFooter');
+    const addExBtn = document.getElementById('addExBtn'), newTitle = document.getElementById('newTitle'), newSets = document.getElementById('newSets'), newReps = document.getElementById('newReps'), newRest = document.getElementById('newRest'), newWeight = document.getElementById('newWeight');
+    const progressChart = document.getElementById('progressChart'), prsEl = document.getElementById('prs');
+    const themeToggle = document.getElementById('themeToggle'), loopToggle = document.getElementById('loopToggle'), fullscreenBtn = document.getElementById('fullscreenBtn');
+    const exportBtn = document.getElementById('exportBtn'), importBtn = document.getElementById('importBtn');
+    const calendarDisplay = document.getElementById('calendarDisplay');
+    const suggestedWorkoutDisplay = document.getElementById('suggestedWorkoutDisplay');
+    const libraryList = document.getElementById('libraryList'), librarySearch = document.getElementById('librarySearch');
+
+    (async function init(){
+        WORKOUTS = await loadAsync(STORAGE_KEYS.WORKOUTS, DEFAULT_WORKOUTS);
+        history = await loadAsync(STORAGE_KEYS.HISTORY, []);
+        prs = await loadAsync(STORAGE_KEYS.PRS, {});
+        calendar = await loadAsync(STORAGE_KEYS.CALENDAR, {});
+        currentWorkout = load(STORAGE_KEYS.CURRENT_WORKOUT, Object.keys(WORKOUTS)[0]);
+        currentIndex = load('currentIndex_'+currentWorkout, 0);
+        loopMode = load(STORAGE_KEYS.LOOP_MODE, false);
+        loopToggle.checked = !!loopMode;
+        document.body.setAttribute('data-theme', load(STORAGE_KEYS.THEME,'dark'));
+        Notification && Notification.requestPermission && Notification.requestPermission();
+        renderCalendar();
+        suggestWorkout();
+        renderWorkoutButtons();
+        renderList();
+        renderExercise();
+        renderProgressChart();
+        renderPRs();
+    })();
+
+    function calculate1RM(weight, reps) {
+        if (typeof reps !== 'number' || reps === 0 || reps > 12) return null;
+        return parseFloat((weight * (36 / (37 - reps))).toFixed(1));
+    }
+
+    function formatTime(s){ const m=Math.floor(s/60).toString().padStart(2,'0'); const sec=(s%60).toString().padStart(2,'0'); return m+':'+sec; }
+
+    async function setWorkout(name){
+      currentWorkout = name;
+      await saveAsync(STORAGE_KEYS.CURRENT_WORKOUT, name);
+      currentIndex = load('currentIndex_'+currentWorkout, 0);
+      resetExerciseState();
+      renderExercise();
+      renderList();
+      modal.classList.remove('open');
+    }
+
+    function getCurrentBlock(){ return (WORKOUTS[currentWorkout]||[])[currentIndex] || null; }
+    function getCurrentExercise(){ return getCurrentBlock() || null; }
+
+    function resetExerciseState(){
+      currentSet = 1;
+      currentExerciseHistory = [];
+      appMode = 'work';
+      if (timer) clearInterval(timer);
+      running = false;
+      remaining = 0;
+    }
+
+    function renderWorkoutButtons(){
+      workoutButtons.innerHTML = '';
+      Object.keys(WORKOUTS).forEach(name=>{
+        const b = document.createElement('button');
+        b.className = 'workout-btn';
+        b.textContent = name;
+        b.onclick = ()=> setWorkout(name);
+        workoutButtons.appendChild(b);
+      });
+    }
+
+    function highlightList(){
+        const items = exerciseList.querySelectorAll('.exercise');
+        items.forEach(el => el.classList.remove('active'));
+        const active = document.getElementById(`block-${currentIndex}`);
+        if (active) active.classList.add('active');
+    }
+
+    function renderList(){
+      exerciseList.innerHTML = '';
+      const list = WORKOUTS[currentWorkout] || [];
+      list.forEach((block, idx)=>{
+        const item = document.createElement('div');
+        item.className = 'exercise';
+        item.id = `block-${idx}`;
+        item.style.flexDirection = 'column';
+        item.style.alignItems = 'flex-start';
+        const left = document.createElement('div');
+        left.className = 'left';
+        const title = document.createElement('div');
+        title.className = 'ex-title';
+        title.textContent = block.title || ('Bloco ' + (idx+1));
+        const meta = document.createElement('div');
+        meta.className = 'ex-meta';
+        meta.textContent = `${block.sets || 1}x${block.reps || '-'} • ${block.rest || 0}s • ${block.weight||0}kg`;
+        left.appendChild(title);
+        left.appendChild(meta);
+        const right = document.createElement('div');
+        right.style.display = 'flex';
+        right.style.gap = '8px';
+        const goto = document.createElement('button');
+        goto.className = 'mini';
+        goto.textContent = 'Ir';
+        goto.onclick = ()=> { currentIndex = idx; resetExerciseState(); renderExercise(); };
+        const del = document.createElement('button');
+        del.className = 'mini';
+        del.textContent = 'Rem';
+        del.onclick = async ()=> {
+            if (!confirm('Remover exercício?')) return;
+            WORKOUTS[currentWorkout].splice(idx,1);
+            await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+            renderList();
+            renderExercise();
+        };
+        right.appendChild(goto);
+        right.appendChild(del);
+        item.appendChild(left);
+        item.appendChild(right);
+        exerciseList.appendChild(item);
+      });
+      highlightList();
+    }
+
+    function findLastSetForExercise(title){
+        for (let i = history.length -1; i >=0; i--){
+            const entry = history[i];
+            for (let j = entry.sets_performed.length -1; j >=0; j--){
+                const s = entry.sets_performed[j];
+                if (s.exerciseTitle === title) return s;
+            }
+        }
+        return null;
+    }
+
+    function renderExercise(){
+      const current = getCurrentExercise();
+      if (!current){
+          currentExerciseTitle.textContent = "Treino Concluído! 🎉";
+          currentExerciseMeta.textContent = "Parabéns. Escolha o próximo.";
+          setIndicator.textContent = "";
+          startPauseBtn.style.display = 'none';
+          return;
+      }
+      startPauseBtn.style.display = 'inline-block';
+      currentWorkoutName.textContent = currentWorkout;
+      currentExerciseTitle.textContent = current.title;
+      currentExerciseMeta.textContent = `${current.sets}x${current.reps} • Descanso: ${current.rest}s • ${current.weight}kg`;
+      save('currentIndex_'+currentWorkout, currentIndex);
+      appMode = 'work';
+      running = false;
+      if (timer) clearInterval(timer);
+      setIndicator.textContent = `Série ${currentSet} / ${current.sets}`;
+      timerDisplay.textContent = formatTime(0);
+      timerLabel.textContent = 'Pronto para Série';
+      startPauseBtn.textContent = 'Concluir Série';
+      let lastWeight = current.weight || 0;
+      let lastReps = '';
+      const lastSet = findLastSetForExercise(current.title);
+      if (lastSet){
+          lastWeight = lastSet.weight || lastWeight;
+          lastReps = lastSet.reps || '';
+      } else {
+          // extract numeric from reps range
+          const m = String(current.reps).match(/^(\d+)/);
+          lastReps = m ? m[1] : '';
+      }
+      logWeightInput.value = lastWeight;
+      logRepsInput.value = lastReps;
+      renderList();
+    }
+
+    async function handleMainButton(){
+      if (appMode === 'work'){
+        const current = getCurrentExercise();
+        if (!current) return;
+        if (currentSet <= current.sets){
+            await logSet(current.title, current.reps);
+            // after logging, if still have sets, start rest; else finish block
+            if (currentSet <= current.sets){
+                startRest();
+            } else {
+                await finishBlock();
+            }
+        } else {
+            await finishBlock();
+        }
+      } else {
+        skipRest();
+      }
+    }
+
+    async function logSet(title, expectedRepsString){
+      const weight = parseFloat(logWeightInput.value) || 0;
+      const reps = parseInt(logRepsInput.value) || 0;
+      if (weight === 0 && String(expectedRepsString).toLowerCase().includes('falha') === false && !String(expectedRepsString).includes('s') && reps === 0){
+          // Allow weight 0 when bodyweight/exercises. But require reps if not time/falha.
+          // If user left both empty, prompt.
+          if (!confirm('Peso ou repetições não preenchidos. Confirmar gravação?')) return;
+      }
+      const rm = (reps > 0 && reps <= 12) ? calculate1RM(weight, reps) : null;
+      const performedSet = { weight, reps, rm, exerciseTitle: title, setIndex: currentSet, expectedReps: expectedRepsString, date: new Date().toISOString() };
+      currentExerciseHistory.push(performedSet);
+      await updatePR(title, performedSet);
+      currentSet++;
+    }
+
+    function startRest(){
+      const current = getCurrentExercise();
+      const restTime = current && current.rest ? current.rest : 60;
+      appMode = 'rest';
+      remaining = restTime;
+      timerLabel.textContent = 'Descanso ☕';
+      startPauseBtn.textContent = 'Pular Descanso';
+      setIndicator.textContent = `Próxima: Série ${currentSet} / ${current ? current.sets : 1}`;
+      startTimer();
+    }
+
+    async function finishBlock(){
+      const current = getCurrentBlock();
+      const entry = {
+        date: new Date().toISOString(),
+        workoutName: currentWorkout,
+        block: current,
+        sets_performed: currentExerciseHistory.slice()
+      };
+      history.push(entry);
+      await saveAsync(STORAGE_KEYS.HISTORY, history);
+      // clear current exercise history after saving
+      currentExerciseHistory = [];
+      renderProgressChart();
+      renderPRs();
+      autoNext();
+    }
+
+    function startTimer(){ running=true; if(timer) clearInterval(timer); timer=setInterval(()=>{ if(remaining<=0){ clearInterval(timer); notifyEnd(); finishRest(); } else { remaining--; timerDisplay.textContent = formatTime(remaining); } },1000); }
+    function pauseTimer(){ running=false; clearInterval(timer); }
+    function skipRest(){ if(appMode==='rest') finishRest(); }
+    function finishRest(){ appMode='work'; clearInterval(timer); remaining=0; timerDisplay.textContent=formatTime(0); timerLabel.textContent='Pronto para Série'; startPauseBtn.textContent='Concluir Série'; renderExercise(); }
+
+    function notifyEnd(){
+      if(navigator.vibrate) navigator.vibrate([200,100,200]);
+      if (Notification && Notification.permission === 'granted') {
+        new Notification('Descanso Finalizado!', { vibrate: [200,100,200] });
+      }
+    }
+
+    function autoNext(){
+      const len = (WORKOUTS[currentWorkout] || []).length;
+      if (!len) {
+          currentIndex = 0;
+          renderExercise();
+          return;
+      }
+      if(loopMode || load(STORAGE_KEYS.LOOP_MODE,false)){
+        currentIndex = (currentIndex + 1) % len;
+      } else {
+        if (currentIndex < len-1) currentIndex++;
+        else currentIndex = len-1; // stay at last
+      }
+      save('currentIndex_'+currentWorkout, currentIndex);
+      resetExerciseState();
+      renderExercise();
+    }
+
+    async function updatePR(title, performedSet){
+      const { weight, reps, rm } = performedSet;
+      const now = new Date().toISOString();
+      if (reps > 0){
+          const key_reps = `${title}_${reps}reps`;
+          if (!prs[key_reps] || weight > prs[key_reps].weight || (weight === prs[key_reps].weight && reps > prs[key_reps].reps)){
+              prs[key_reps] = { weight, reps, date: now };
+          }
+      }
+      if (rm){
+          const key_rm = `${title}_1rm`;
+          if (!prs[key_rm] || rm > prs[key_rm].weight){
+              prs[key_rm] = { weight: rm, reps: 1, date: now, is1RM: true };
+          }
+      }
+      await saveAsync(STORAGE_KEYS.PRS, prs);
+      renderPRs();
+    }
+
+    function renderPRs(){
+        let html = '<h3>Recordes Pessoais (PRs) 🏆</h3>';
+        const grouped = {};
+        Object.keys(prs).forEach(key=>{
+            const parts = key.split('_');
+            const title = parts.slice(0, -1).join('_') || parts[0];
+            if (!grouped[title]) grouped[title] = [];
+            const data = prs[key];
+            if (key.endsWith('1rm')) {
+                grouped[title].push({ label: `${data.weight}kg (1RM)`, date: data.date });
+            } else {
+                grouped[title].push({ label: `${data.weight}kg @ ${data.reps} reps`, date: data.date });
+            }
+        });
+        if (Object.keys(grouped).length === 0){
+            html += '<div class="muted">Nenhum recorde registrado ainda.</div>';
+        } else {
+            Object.keys(grouped).forEach(title=>{
+                html += `<div style="margin-top:10px;font-weight:700;color:#fff">${title}</div>`;
+                grouped[title].forEach(pr=>{
+                    html += `<div class="muted" style="font-size:13px">- ${pr.label} <span style="font-size:11px">(${new Date(pr.date).toLocaleDateString()})</span></div>`;
+                });
+            });
+        }
+        prsEl.innerHTML = html;
+    }
+
+    function renderProgressChart(){
+        if (progressChartInstance) progressChartInstance.destroy();
+        const volumeData = {};
+        history.forEach(entry=>{
+            const date = entry.date.substring(0,10);
+            let volume = 0;
+            entry.sets_performed.forEach(s=>{
+                const reps = parseInt(s.reps) || 0;
+                const weight = parseFloat(s.weight) || 0;
+                volume += reps * weight;
+            });
+            volumeData[date] = (volumeData[date] || 0) + volume;
+        });
+        const labels = Object.keys(volumeData).sort();
+        const data = labels.map(d => volumeData[d]);
+        const ctx = progressChart.getContext('2d');
+        progressChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Volume (kg x reps)',
+                    data,
+                    borderColor: '#caa76e',
+                    backgroundColor: 'rgba(202,167,110,0.12)',
+                    tension: 0.25,
+                    fill: true,
+                    pointRadius: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { x: { grid: { display: false }, ticks: { color: 'var(--muted)' } }, y: { ticks: { color: 'var(--muted)' } } },
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+
+    const dayNames = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+    function renderCalendar(){
+        calendarDisplay.innerHTML = '';
+        const table = document.createElement('table');
+        table.style.width='100%'; table.style.textAlign='center'; table.style.borderCollapse='collapse';
+        const head = table.createTHead(); const body = table.createTBody();
+        const headRow = head.insertRow();
+        dayNames.forEach(day => {
+            const th = document.createElement('th');
+            th.textContent = day; th.style.color='var(--accent)'; th.style.padding='8px 0';
+            headRow.appendChild(th);
+        });
+        const bodyRow = body.insertRow();
+        dayNames.forEach((d,i) => {
+            const td = bodyRow.insertCell();
+            td.style.padding='8px 0'; td.style.border='1px solid var(--glass)';
+            const currentAssignment = calendar[i] || '-';
+            td.textContent = currentAssignment === '-' ? '-' : currentAssignment.split(' ')[0].replace('🟥','A').replace('🟦','B').replace('🟩','C');
+            td.onclick = async () => {
+                const choice = prompt('Atribuir treino para ' + dayNames[i] + ' (use nome exato ou vazio para remover). Treinos disponíveis:\n' + Object.keys(WORKOUTS).join('\n'), calendar[i] || '');
+                if (choice === null) return;
+                if (choice.trim() === '') { delete calendar[i]; } else { calendar[i] = choice.trim(); }
+                await saveAsync(STORAGE_KEYS.CALENDAR, calendar);
+                renderCalendar();
+                suggestWorkout();
+            };
+            bodyRow.appendChild(td);
+        });
+        calendarDisplay.appendChild(table);
+    }
+
+    function suggestWorkout(){
+        const today = new Date().getDay();
+        const suggested = calendar[today];
+        if (suggested){
+            suggestedWorkoutDisplay.innerHTML = `Treino: <strong>${suggested}</strong> <button class="mini" style="margin-left:8px" id="startSuggested">Iniciar</button>`;
+            document.getElementById('startSuggested').onclick = ()=> setWorkout(suggested);
+        } else {
+            suggestedWorkoutDisplay.textContent = 'Nenhum treino planejado para hoje.';
+        }
+    }
+
+    const SIMPLE_EXERCISE_LIBRARY = [
+        {title:'Supino reto com barra', muscle:'Peito', description:'Foco peitoral maior. Siga o protocolo padrão.'},
+        {title:'Agachamento com barra', muscle:'Pernas', description:'Foco em quadríceps e glúteos. Mantenha boa profundidade.'},
+        {title:'Remada curvada com barra', muscle:'Costas', description:'Foco na dorsal. Puxe em direção ao umbigo.'},
+        {title:'Elevação lateral com halteres', muscle:'Ombros', description:'Foco no deltoide medial. Não balance o corpo.'},
+        {title:'Tríceps testa com barra/halter', muscle:'Tríceps', description:'Mantenha cotovelos fixos. Foco na cabeça longa.'},
+        {title:'Rosca direta com barra', muscle:'Bíceps', description:'Foco no pico do bíceps.'},
+        {title:'Stiff com barra', muscle:'Pernas', description:'Foco em posterior de coxa. Mantenha a coluna neutra.'},
+        {title:'Desenvolvimento militar', muscle:'Ombros', description:'Trabalha o deltoide frontal e medial.'},
+        {title:'Elevação de pernas deitado', muscle:'Abdômen', description:'Foco em abdominais inferiores.'},
+        {title:'Prancha isométrica', muscle:'Core', description:'Foco em estabilidade e abdômen.'},
+    ];
+
+    function renderLibrary(query = ''){
+        libraryList.innerHTML = '';
+        const filtered = SIMPLE_EXERCISE_LIBRARY.filter(ex => ex.title.toLowerCase().includes(query.toLowerCase()) || ex.muscle.toLowerCase().includes(query.toLowerCase()));
+        filtered.forEach(ex=>{
+            const item = document.createElement('div');
+            item.className = 'library-item';
+            item.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-weight:700">${ex.title}</div>
+                  <div class="muted" style="font-size:13px">${ex.muscle} — ${ex.description}</div>
+                </div>
+                <div>
+                  <button class="mini add-lib">Adicionar</button>
+                </div>
+            </div>`;
+            item.querySelector('.add-lib').onclick = ()=> addExFromLibrary(ex.title);
+            libraryList.appendChild(item);
+        });
+        if (filtered.length === 0) libraryList.innerHTML = '<div class="muted" style="padding:12px">Nenhum exercício encontrado.</div>';
+    }
+
+    function addExFromLibrary(title){
+        const id = title.replace(/\s/g,'-').toLowerCase();
+        const newEx = { type:'standard', id, title, sets:3, reps:'10-12', rest:60, weight:0 };
+        WORKOUTS[currentWorkout] = WORKOUTS[currentWorkout] || [];
+        WORKOUTS[currentWorkout].push(newEx);
+        saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+        renderList();
+        alert(`${title} adicionado ao ${currentWorkout}.`);
+        libraryModal.classList.remove('open');
+    }
+
+    openMenu.onclick = ()=> modal.classList.add('open');
+    closeMenu.onclick = ()=> modal.classList.remove('open');
+    window.onclick = (e)=>{ if (e.target === modal) modal.classList.remove('open'); }
+    openLibrary.onclick = ()=> { libraryModal.classList.add('open'); renderLibrary(); };
+    closeLibrary.onclick = ()=> libraryModal.classList.remove('open');
+    librarySearch.oninput = (e)=> renderLibrary(e.target.value);
+    startPauseBtn.onclick = handleMainButton;
+    prevBtn.onclick = prevExercise; nextBtn.onclick = nextExercise;
+    prevFooter.onclick = prevExercise; nextFooter.onclick = nextExercise;
+    resetBtn.onclick = ()=> { resetExerciseState(); renderExercise(); };
+
+    function prevExercise(){
+        if ((WORKOUTS[currentWorkout]||[]).length === 0) return;
+        if (currentIndex > 0) currentIndex--;
+        else currentIndex = WORKOUTS[currentWorkout].length - 1;
+        resetExerciseState(); renderExercise();
+    }
+    function nextExercise(){
+        if ((WORKOUTS[currentWorkout]||[]).length === 0) return;
+        currentIndex = (currentIndex + 1) % (WORKOUTS[currentWorkout].length || 1);
+        resetExerciseState(); renderExercise();
+    }
+
+    addExBtn.onclick = async ()=>{
+        const title = newTitle.value; const sets = parseInt(newSets.value);
+        const reps = newReps.value; const rest = parseInt(newRest.value);
+        const weight = parseFloat(newWeight.value);
+        if (title && sets > 0 && reps && rest > 0){
+            WORKOUTS[currentWorkout] = WORKOUTS[currentWorkout] || [];
+            WORKOUTS[currentWorkout].push({type:'standard', id:title.replace(/\s/g,'-').toLowerCase(), title, sets, reps, rest, weight});
+            await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+            renderList();
+            newTitle.value = newSets.value = newReps.value = newRest.value = newWeight.value = '';
+        } else { alert('Preencha todos os campos do exercício corretamente.'); }
+    }
+
+    themeToggle.onclick = ()=>{
+        const currentTheme = document.body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        save(STORAGE_KEYS.THEME, newTheme);
+    }
+
+    loopToggle.onchange = (e)=>{
+        loopMode = e.target.checked;
+        save(STORAGE_KEYS.LOOP_MODE, loopMode);
+    }
+
+    fullscreenBtn.onclick = () => {
+        const element = document.documentElement;
+        if (document.fullscreenElement) document.exitFullscreen();
+        else if (element.requestFullscreen) element.requestFullscreen();
+    };
+
+    setInterval(async ()=>{
+        await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+        await saveAsync(STORAGE_KEYS.CALENDAR, calendar);
+    }, 15000);
+
+    exportBtn.onclick = async ()=>{
+      const payload = { workouts: WORKOUTS, history, prs, calendar };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'synapse_backup_'+(new Date()).toISOString().slice(0,10)+'.json'; a.click();
+      URL.revokeObjectURL(url);
+    };
+
+    importBtn.onclick = ()=>{
+      const input = document.createElement('input'); input.type='file'; input.accept='application/json';
+      input.onchange = (e)=>{
+        const f = e.target.files[0]; if(!f) return;
+        const reader = new FileReader();
+        reader.onload = async (ev)=>{
+            try {
+                const parsed = JSON.parse(ev.target.result);
+                if (parsed.workouts) WORKOUTS = parsed.workouts;
+                if (parsed.history) history = parsed.history;
+                if (parsed.prs) prs = parsed.prs;
+                if (parsed.calendar) calendar = parsed.calendar;
+                await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+                await saveAsync(STORAGE_KEYS.HISTORY, history);
+                await saveAsync(STORAGE_KEYS.PRS, prs);
+                await saveAsync(STORAGE_KEYS.CALENDAR, calendar);
+                renderWorkoutButtons(); renderList(); renderExercise(); renderProgressChart(); renderPRs(); renderCalendar();
+                alert('Importação concluída.');
+            } catch(err){ alert('Erro ao importar arquivo: ' + err.message); }
+        };
+        reader.readAsText(f);
+      };
+      input.click();
+    };
+
+    window.addEventListener('beforeunload', async (event) => {
+        await saveAsync(STORAGE_KEYS.HISTORY, history);
+        await saveAsync(STORAGE_KEYS.PRS, prs);
+        await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+        await saveAsync(STORAGE_KEYS.CALENDAR, calendar);
+    });
+
+}); // <-- FECHA O addEventListener('DOMContentLoaded', ...)
+</script>
+</body>
+</html>
+```// filepath: c:\Users\Pichau\OneDrive\Área de Trabalho\Ascender\cronometrotop\index.html
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Lux Synapse • Treinos Essenciais</title>
+  <meta name="description" content="Lux Synapse: Seu app de treino avançado com rastreamento de séries." />
+  <meta name="theme-color" content="#0b0c0d" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7v6c0 5 4 9 10 9s10-4 10-9V7l-10-5z' fill='%23caa76e'/%3E%3C/svg%3E" type="image/svg+xml" />
+  <style>
+    :root{
+      --bg:#0b0c0d; --card:#0f1112; --muted:#9aa3ab; --accent:#caa76e; --glass: rgba(255,255,255,0.04); --radius:14px; --success:#27ae60; --danger:#e74c3c; --warn:#f39c12; font-family: Inter, Roboto, system-ui, -apple-system, 'Segoe UI', Arial; color-scheme: dark;
+    }
+    [data-theme='light']{ --bg:#f6f7f8; --card:#ffffff; --muted:#6b7280; --accent:#6b4f2b; --glass: rgba(0,0,0,0.03); color-scheme: light }
+    html,body{height:100%;background:linear-gradient(180deg,var(--bg),#0d0e10);margin:0;padding:0;color:var(--muted);-webkit-font-smoothing:antialiased}
+    .app{max-width:920px;margin:0 auto;padding:16px;padding-bottom:250px;box-sizing:border-box}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#161718 0%, #1f2122 60%);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,0.02)}
+    .logo svg{fill:var(--accent)}
+    h1{font-size:16px;margin:0;color:var(--accent)}
+    .subtitle{color:var(--muted);font-size:12px}
+    .card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));border-radius:var(--radius);padding:14px;margin-bottom:12px;box-shadow:0 6px 18px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,0.03);color:inherit}
+    .row{display:flex;gap:12px;align-items:center}
+    .exercise{display:flex;justify-content:space-between;align-items:center;padding:10px 8px;border-radius:12px;background:var(--glass);margin-bottom:8px}
+    .exercise .left{display:flex;gap:12px;align-items:center}
+    .badge{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:12px;color:var(--muted)}
+    .ex-title{font-size:14px;color:inherit}
+    .ex-meta{color:var(--muted);font-size:12px}
+    #exerciseList { max-height: 350px; overflow-y: auto; padding-right: 8px; }
+    .controls{display:flex;gap:8px;align-items:center}
+    button.control{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:10px;color:var(--accent);font-weight:700}
+    button.ghost{background:transparent;border:0;color:var(--muted);padding:8px}
+    .timer-panel{display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px;border-radius:14px;text-align:center}
+    .big-time{font-size:44px;font-weight:800;letter-spacing:1px;color:var(--accent)}
+    .small{color:var(--muted);font-size:13px}
+    #setIndicator {font-size: 18px; font-weight: 700; color: var(--accent); margin-top: 8px;}
+    #setInputs {display:flex;gap:12px;align-items:center;margin-top:12px}
+    .footer{position:fixed;left:0;right:0;bottom:0;background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.9));backdrop-filter:blur(6px);padding:12px;border-top:1px solid rgba(255,255,255,0.02)}
+    .nav{max-width:920px;margin:0 auto;display:flex;gap:8px}
+    .nav button{flex:1;padding:12px;border-radius:12px;border:0;font-weight:700}
+    .modal{position:fixed;inset:0;display:none;align-items:flex-end;z-index:1000}
+    .modal.open{display:flex}
+    .sheet{width:100%;background:linear-gradient(180deg,#0b0c0d,#0d0e0f);padding:16px;border-top-left-radius:16px;border-top-right-radius:16px}
+    .workout-btn{display:block;width:100%;text-align:left;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);margin-bottom:8px;background:transparent;color:inherit}
+    .small-input{width:72px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
+    .muted{color:var(--muted)}
+    .actions-row{display:flex;gap:8px;flex-wrap:wrap}
+    .mini{padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent}
+    .chart{width:100%;height:160px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border-radius:10px;padding:8px}
+    .library-item {background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05);}
+    .library-item-content {display: flex; align-items: center; gap: 12px;}
+    .library-item-icon {font-size: 24px;}
+    @media(min-width:720px){.app{padding:28px; padding-bottom: 250px;}}
+    .exercise.active { outline: 2px solid var(--accent); background: rgba(202,167,110,0.08); }
+  </style>
+</head>
+<body data-theme="dark">
+  <div class="app" id="app">
+    <header>
+      <div class="brand">
+        <div class="logo"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2L2 7v6c0 5 4 9 10 9s10-4 10-9V7l-10-5z"/></svg></div>
+        <div>
+          <h1>Lux Synapse</h1>
+          <div class="subtitle">Barra 20kg • Halteres 8kg • Local Data</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="menu-btn mini" id="openMenu">Treinos</button>
+        <button class="menu-btn mini" id="themeToggle">Tema</button>
+        <button class="menu-btn mini" id="openLibrary">Biblioteca</button>
+      </div>
+    </header>
+
+    <div class="card" id="suggestionCard">
+        <div style="font-weight:800;font-size:15px">Treino Sugerido para Hoje</div>
+        <div class="muted" id="suggestedWorkoutDisplay">Verificando calendário...</div>
+    </div>
+    
+    <div class="card" id="exerciseCard">
+      <div class="row" style="justify-content:space-between;align-items:center">
+        <div>
+          <div class="muted" id="currentWorkoutName">Treino A</div>
+          <div style="font-size:18px;font-weight:800;color:var(--accent)" id="currentExerciseTitle">Supino reto com barra</div>
+          <div class="ex-meta" id="currentExerciseMeta">4x10-12 • Descanso: 90s</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+          <div class="actions-row">
+            <button class="ghost" id="prevBtn">◀</button>
+            <button class="ghost" id="nextBtn">▶</button>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <div class="muted">Modo Loop</div>
+            <input type="checkbox" id="loopToggle" />
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px" class="timer-panel card">
+        <div class="big-time" id="timerDisplay">00:00</div>
+        <div class="small" id="timerLabel">Pronto para Série</div>
+        <div id="setIndicator">Série 1 / 4</div>
+        
+        <div id="setInputs">
+          <label class="small">Peso (kg)</label>
+          <input id="logWeightInput" class="small-input" type="number" step="0.5" />
+          <label class="small">Reps</label>
+          <input id="logRepsInput" class="small-input" type="number" />
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <button class="control" id="startPauseBtn" style="min-width: 140px;">Concluir Série</button>
+          <button class="control" id="resetBtn">Reset</button>
+          <button class="control" id="fullscreenBtn">Tela</button>
+        </div>
+      </div>
+
+      <div style="margin-top:12px">
+        <div class="muted" style="font-size:13px;margin-bottom:8px">Navegar no treino • Editar</div>
+        <div id="exerciseList"></div>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
+          <input id="newTitle" class="small-input" placeholder="Novo exercício" />
+          <input id="newSets" class="small-input" type="number" placeholder="Séries" />
+          <input id="newReps" class="small-input" placeholder="Reps (ex: 10-12)" />
+          <input id="newRest" class="small-input" type="number" placeholder="Rest (s)" />
+          <input id="newWeight" class="small-input" type="number" placeholder="Peso (kg)" />
+          <button id="addExBtn" class="mini">Adicionar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-weight:800">Histórico & Progresso</div>
+          <div class="muted">Registros locais, PRs e gráfico de volume</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button id="exportBtn" class="mini">Exportar</button>
+          <button id="importBtn" class="mini">Importar</button>
+        </div>
+      </div>
+      <div style="margin-top:12px">
+        <canvas id="progressChart" class="chart"></canvas>
+      </div>
+      <div style="margin-top:12px;color:var(--muted)" id="prs">PRs: nenhum ainda</div>
+    </div>
+    
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="sheet">
+      <h3 style="margin:0 0 8px 0">Escolha o treino</h3>
+      <div id="workoutButtons"></div>
+      
+      <h3 style="margin:16px 0 8px 0">Planejador Semanal</h3>
+      <div id="calendarDisplay"></div>
+      
+      <div style="height:12px"></div>
+      <button id="closeMenu" class="workout-btn">Fechar</button>
+    </div>
+  </div>
+  
+  <div class="modal" id="libraryModal">
+    <div class="sheet">
+      <h3 style="margin:0 0 8px 0">📚 Biblioteca de Exercícios</h3>
+      <input id="librarySearch" class="workout-btn" placeholder="Buscar exercício ou grupo muscular..." />
+      <div id="libraryList" style="max-height: 400px; overflow-y: scroll; padding: 4px 0;"></div>
+      <button id="closeLibrary" class="workout-btn" style="margin-top:12px">Fechar</button>
+    </div>
+  </div>
 
   <div class="footer">
     <div class="nav">
@@ -200,828 +999,637 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/umd/chart.umd.min.js"></script>
 
 <script>
-// --- DATA MODEL (Corrigido e sem Library)
-const STORAGE_KEYS = {
-    WORKOUTS: 'workouts',
-    HISTORY: 'history',
-    PRS: 'prs',
-    CURRENT_WORKOUT: 'currentWorkoutName',
-    THEME: 'theme',
-    LOOP_MODE: 'loopMode',
-    CALENDAR: 'calendar'
-};
-
-const DEFAULT_WORKOUTS = {
-  '🟥 TREINO A (Peito/Tríceps/Frontal)': [
-    {type: 'standard', id:'supino-reto-barra', title:'Supino reto com barra', sets: 4, reps:'10-12', rest:90, weight:20},
-    {type: 'standard', id:'supino-inclinado-halter', title:'Supino inclinado com halteres', sets: 3, reps:'12-15', rest:60, weight:10},
-    {type: 'standard', id:'flexao-braco', title:'Flexão de braço (militar/pés elevados)', sets: 3, reps:'Falha', rest:52, weight:0}, // Média de 45-60s = 52s
-    {type: 'standard', id:'triceps-testa', title:'Tríceps testa com barra/halter', sets: 3, reps:'10-12', rest:60, weight:8},
-    {type: 'standard', id:'mergulho-bancos', title:'Mergulho entre bancos/cadeiras', sets: 3, reps:'Falha', rest:60, weight:0},
-    {type: 'standard', id:'desenvolvimento-militar', title:'Desenvolvimento militar (barra ou halteres)', sets: 4, reps:'10-12', rest:60, weight:10},
-    {type: 'standard', id:'elevacao-frontal', title:'Elevação frontal com halteres', sets: 3, reps:'12-15', rest:45, weight:5},
-  ],
-  '🟦 TREINO B (Costas/Bíceps/Lateral-Post)': [
-    {type: 'standard', id:'remada-curvada-barra', title:'Remada curvada com barra', sets: 4, reps:'10-12', rest:90, weight:20},
-    {type: 'standard', id:'remada-unilateral-halter', title:'Remada unilateral com halter', sets: 3, reps:'12-15 por lado', rest:60, weight:10},
-    {type: 'standard', id:'barra-fixa', title:'Barra fixa (ou negativas)', sets: 4, reps:'Falha', rest:90, weight:0},
-    {type: 'standard', id:'rosca-direta', title:'Rosca direta com barra', sets: 3, reps:'10-12', rest:60, weight:10},
-    {type: 'standard', id:'rosca-martelo', title:'Rosca martelo com halteres', sets: 3, reps:'12', rest:45, weight:6},
-    {type: 'standard', id:'elevacao-lateral', title:'Elevação lateral com halteres', sets: 3, reps:'12-15', rest:37, weight:5}, // Média de 30-45s = 37s
-    {type: 'standard', id:'remada-alta-inclinada', title:'Remada alta inclinada (substitui elevação posterior)', sets: 3, reps:'12-15', rest:52, weight:8}, // Média de 45-60s = 52s
-  ],
-  '🟩 TREINO C (Pernas/Core/Panturrilha)': [
-    {type: 'standard', id:'agachamento-barra', title:'Agachamento com barra', sets: 4, reps:'15', rest:90, weight:20},
-    {type: 'standard', id:'agachamento-bulgaro', title:'Agachamento búlgaro/afundo com halteres', sets: 3, reps:'12 por perna', rest:60, weight:8},
-    {type: 'standard', id:'stiff-barra', title:'Stiff com barra', sets: 4, reps:'12-15', rest:60, weight:20},
-    
-    // Panturrilhas
-    {type: 'standard', id:'panturrilha-em-pe', title:'Elevação em pé com barra ou halteres', sets: 4, reps:'20-25', rest:45, weight:15},
-    {type: 'standard', id:'panturrilha-unilateral', title:'Elevação unilateral com halter', sets: 3, reps:'15-20 por perna', rest:37, weight:5},
-    {type: 'standard', id:'panturrilha-sentada-improvisada', title:'Panturrilha sentada improvisada', sets: 3, reps:'25-30', rest:30, weight:15},
-    {type: 'standard', id:'isometria-panturrilha', title:'Isometria na ponta dos pés', sets: 2, reps:'30-45s', rest:30, weight:0},
-
-    // Abdômen/Core
-    {type: 'standard', id:'elevacao-pernas', title:'Elevação de pernas deitado', sets: 3, reps:'15', rest:30, weight:0},
-    {type: 'standard', id:'crunch-halter', title:'Crunch com halter no peito', sets: 3, reps:'20', rest:30, weight:5},
-    {type: 'standard', id:'prancha-isométrica', title:'Prancha isométrica', sets: 3, reps:'45-60s', rest:30, weight:0},
-  ]
-};
-
-// --- Storage Helpers (IDB-KEYVAL - Assíncrono)
-const { get, set } = idbKeyval; 
-
-// Novo Load (Assíncrono)
-async function loadAsync(key, fallback){ 
-    try { 
-        const v = await get(key); 
-        return v !== undefined ? v : fallback; 
-    } catch(e){ 
-        console.error("Erro ao carregar dados de IDB:", key, e);
-        const lsValue = localStorage.getItem(key);
-        if (lsValue) {
-            try { return JSON.parse(lsValue); } catch(e) { return fallback; }
-        }
-        return fallback; 
-    } 
-}
-// Novo Save (Assíncrono)
-async function saveAsync(key, val){ 
-    try { 
-        await set(key, val); 
-    } catch(e){ 
-        console.error("Erro ao salvar dados em IDB:", key, e);
-        localStorage.setItem(key, JSON.stringify(val));
-    } 
-}
-// Load e Save (Síncronos) para dados temporários e tema
-function load(key, fallback){ try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch(e){ return fallback; } }
-function save(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
-
-
-// --- App State (Atualizado para Assíncrono)
-let WORKOUTS = {};
-let history = [];
-let prs = {};
-let calendar = {}; 
-let currentWorkout = '';
-let currentIndex = 0;
-let currentExerciseInSupersetIndex = 0; 
-let currentSet = 1; 
-let appMode = 'work'; 
-let currentExerciseHistory = []; 
-let timer = null;
-let remaining = 0;
-let running = false;
-let loopMode = load(STORAGE_KEYS.LOOP_MODE, false);
-let progressChartInstance = null; 
-
-
-// --- DOM Refs
-const modal = document.getElementById('modal'); const libraryModal = document.getElementById('libraryModal');
-const openMenu = document.getElementById('openMenu'); const closeMenu = document.getElementById('closeMenu'); 
-const openLibrary = document.getElementById('openLibrary'); const closeLibrary = document.getElementById('closeLibrary');
-const workoutButtons = document.getElementById('workoutButtons');
-const currentWorkoutName = document.getElementById('currentWorkoutName'); const currentExerciseTitle = document.getElementById('currentExerciseTitle'); const currentExerciseMeta = document.getElementById('currentExerciseMeta');
-const timerDisplay = document.getElementById('timerDisplay'); const timerLabel = document.getElementById('timerLabel'); const startPauseBtn = document.getElementById('startPauseBtn');
-const setIndicator = document.getElementById('setIndicator'); const logWeightInput = document.getElementById('logWeightInput'); const logRepsInput = document.getElementById('logRepsInput');
-const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const resetBtn = document.getElementById('resetBtn');
-const exerciseList = document.getElementById('exerciseList');
-const prevFooter = document.getElementById('prevExerciseFooter'); const nextFooter = document.getElementById('nextExerciseFooter');
-const addExBtn = document.getElementById('addExBtn'); const newTitle = document.getElementById('newTitle'); const newSets = document.getElementById('newSets'); const newReps = document.getElementById('newReps'); const newRest = document.getElementById('newRest'); const newWeight = document.getElementById('newWeight');
-const progressChart = document.getElementById('progressChart'); const prsEl = document.getElementById('prs');
-const themeToggle = document.getElementById('themeToggle'); const loopToggle = document.getElementById('loopToggle'); const fullscreenBtn = document.getElementById('fullscreenBtn');
-const exportBtn = document.getElementById('exportBtn'); const importBtn = document.getElementById('importBtn');
-const calendarDisplay = document.getElementById('calendarDisplay');
-const suggestedWorkoutDisplay = document.getElementById('suggestedWorkoutDisplay');
-const libraryList = document.getElementById('libraryList'); const librarySearch = document.getElementById('librarySearch');
-
-
-// --- Init (Agora ASYNC e centralizado)
-(async function init() {
-  WORKOUTS = await loadAsync(STORAGE_KEYS.WORKOUTS, DEFAULT_WORKOUTS);
-  history = await loadAsync(STORAGE_KEYS.HISTORY, []);
-  prs = await loadAsync(STORAGE_KEYS.PRS, {});
-  calendar = await loadAsync(STORAGE_KEYS.CALENDAR, {});
-  
-  currentWorkout = load(STORAGE_KEYS.CURRENT_WORKOUT, Object.keys(WORKOUTS)[0]);
-  currentIndex = load('currentIndex_'+currentWorkout, 0); 
-  loopMode = load(STORAGE_KEYS.LOOP_MODE, false);
-  loopToggle.checked = loopMode;
-  
-  document.body.setAttribute('data-theme', load(STORAGE_KEYS.THEME,'dark'));
-  
-  Notification.requestPermission();
-  
-  renderCalendar();
-  suggestWorkout();
-  renderWorkoutButtons(); 
-  renderList(); 
-  renderExercise(); 
-  renderProgressChart(); 
-  renderPRs();
-})();
-
-
-// --- Lógica de Força e Cálculo (NOVO) ---
-function calculate1RM(weight, reps) {
-    // Para reps não-numéricas ('Falha', '12 por lado', '30s'), retornamos null
-    if (typeof reps !== 'number' || reps === 0 || reps > 12) return null; 
-    // Fórmula de Brzycki: 1RM = Peso * (36 / (37 - Reps))
-    return parseFloat((weight * (36 / (37 - reps))).toFixed(1));
-}
-
-// --- Funções Auxiliares de Treino e Estado ---
-
-function formatTime(s){ const m=Math.floor(s/60).toString().padStart(2,'0'); const sec=(s%60).toString().padStart(2,'0'); return m+':'+sec; }
-
-async function setWorkout(name){ 
-  currentWorkout=name; 
-  await saveAsync(STORAGE_KEYS.CURRENT_WORKOUT,name); 
-  currentIndex = load('currentIndex_'+currentWorkout, 0); 
-  resetExerciseState();
-  renderExercise(); 
-  renderList(); 
-  modal.classList.remove('open');
-}
-
-function getCurrentExercise() {
-    const block = WORKOUTS[currentWorkout][currentIndex];
-    if (!block) return null;
-    
-    if (block.type === 'superset') {
-        return block.exercises[currentExerciseInSupersetIndex];
-    }
-    return block; 
-}
-
-function getCurrentBlock() {
-    return WORKOUTS[currentWorkout][currentIndex];
-}
-
-function resetExerciseState() {
-  currentSet = 1;
-  currentExerciseHistory = [];
-  currentExerciseInSupersetIndex = 0;
-  appMode = 'work';
-  if (timer) clearInterval(timer);
-  running = false;
-  remaining = 0;
-}
-
-
-// --- Funções de Renderização ---
-
-function renderWorkoutButtons(){ 
-  workoutButtons.innerHTML=''; 
-  Object.keys(WORKOUTS).forEach(name=>{ 
-    const b=document.createElement('button'); 
-    b.className='workout-btn'; b.textContent=name; 
-    b.onclick=()=> setWorkout(name); 
-    workoutButtons.appendChild(b); 
-  }); 
-}
-
-function highlightList(){
-    WORKOUTS[currentWorkout].forEach((block, idx) => {
-        const itemEl = document.getElementById(`block-${idx}`);
-        if (itemEl) {
-            itemEl.style.border = (idx === currentIndex) ? '1px solid var(--accent)' : '1px solid rgba(255,255,255,0.03)';
-        }
-    });
-}
-
-function renderList(){ 
-  exerciseList.innerHTML=''; 
-  WORKOUTS[currentWorkout].forEach((block,idx)=>{ 
-    const item=document.createElement('div'); 
-    item.className='exercise'; 
-    item.id = `block-${idx}`; 
-    item.style.flexDirection = 'column';
-    item.style.alignItems = 'flex-start';
-
-    if (block.type === 'superset') {
-        const titleRow = document.createElement('div');
-        titleRow.className = 'row';
-        titleRow.style.width = '100%';
-        titleRow.style.justifyContent = 'space-between';
-        
-        const badge=document.createElement('div'); badge.className='badge'; badge.textContent=`${idx+1} • SS`; 
-        titleRow.appendChild(badge);
-        
-        const go=document.createElement('button'); go.className='ghost'; go.textContent='▶'; go.onclick=()=>{ currentIndex=idx; currentExerciseInSupersetIndex=0; resetExerciseState(); renderExercise(); };
-        const del=document.createElement('button'); del.className='mini'; del.textContent='Rem'; del.onclick=async ()=>{ 
-             if(confirm('Remover superset?')){ 
-                 WORKOUTS[currentWorkout].splice(idx,1); 
-                 await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS); 
-                 renderList(); renderExercise(); 
-             }
-        };
-        
-        const controls = document.createElement('div'); controls.className = 'controls';
-        controls.appendChild(go); controls.appendChild(del);
-        titleRow.appendChild(controls);
-        
-        item.appendChild(titleRow);
-        
-        block.exercises.forEach(ex => {
-            const exDetail = document.createElement('div');
-            exDetail.className = 'ex-meta';
-            exDetail.style.paddingLeft = '18px';
-            exDetail.textContent = `🏋️ ${ex.title} (${ex.sets}x${ex.reps}) - Descanso: ${ex.rest === 0 ? 'Após SS' : ex.rest + 's'}`;
-            item.appendChild(exDetail);
-        });
-
-    } else { // Exercício Padrão (Standard)
-        const ex = block;
-        const left=document.createElement('div'); left.className='left'; 
-        const badge=document.createElement('div'); badge.className='badge'; badge.textContent=(idx+1); 
-        const txt=document.createElement('div'); 
-        const t1=document.createElement('div'); t1.className='ex-title'; t1.textContent=`🏋️ ${ex.title}`; // Adicionando emoji para visual
-        const t2=document.createElement('div'); t2.className='ex-meta'; t2.textContent=`${ex.sets}x${ex.reps} • Descanso: ${ex.rest}s • ${ex.weight}kg`; 
-        txt.appendChild(t1); txt.appendChild(t2); 
-        left.appendChild(badge); left.appendChild(txt); 
-        item.appendChild(left);
-        
-        const right=document.createElement('div'); right.style.display='flex'; right.style.alignItems='center'; right.style.gap='6px';
-        const go=document.createElement('button'); go.className='ghost'; go.textContent='▶'; go.onclick=()=>{ currentIndex=idx; resetExerciseState(); renderExercise(); };
-        const del=document.createElement('button'); del.className='mini'; del.textContent='Rem'; del.onclick=async ()=>{ 
-             if(confirm('Remover exercício?')){ 
-                 WORKOUTS[currentWorkout].splice(idx,1); 
-                 await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS); 
-                 renderList(); renderExercise(); 
-             }
-        };
-        right.appendChild(go); right.appendChild(del); 
-        item.appendChild(right); 
-        item.style.flexDirection = 'row';
-    }
-    
-    exerciseList.appendChild(item); 
-  }); 
-  highlightList(); 
-}
-
-function renderExercise(){ 
-  const currentBlock = getCurrentBlock();
-  const currentEx = getCurrentExercise();
-  
-  if (!currentBlock || !currentEx) {
-      currentExerciseTitle.textContent = "Treino Concluído! 🎉";
-      currentExerciseMeta.textContent = "Parabéns. Escolha o próximo.";
-      setIndicator.textContent = "";
-      startPauseBtn.style.display = 'none'; 
-      return;
-  }
-
-  startPauseBtn.style.display = 'inline-block';
-  
-  currentWorkoutName.textContent = currentWorkout; 
-  currentExerciseTitle.textContent = currentEx.title; 
-  currentExerciseMeta.textContent = `${currentEx.sets}x${currentEx.reps} • Descanso: ${currentEx.rest}s • ${currentEx.weight}kg`;
-  
-  if (currentBlock.type === 'superset') {
-      currentExerciseMeta.textContent = `SS: ${currentEx.title} (${currentEx.sets}x${currentEx.reps}) • Descanso após o Superset: ${currentBlock.rest}s`;
-  }
-  
-  highlightList(); 
-  save('currentIndex_'+currentWorkout,currentIndex);
-  
-  appMode = 'work';
-  running = false;
-  if(timer) clearInterval(timer);
-  
-  setIndicator.textContent = `Série ${currentSet} / ${currentEx.sets}`;
-  timerDisplay.textContent = formatTime(0);
-  timerLabel.textContent = 'Pronto para Série';
-  startPauseBtn.textContent = 'Concluir Série';
-  
-  let lastWeight = currentEx.weight;
-  // Apenas extrai números para o input de reps se for um formato numérico.
-  let lastReps = currentEx.reps.match(/^\d+$/) ? currentEx.reps.match(/^\d+$/)[0] : 
-                 currentEx.reps.match(/^(\d+)-(\d+)/) ? currentEx.reps.match(/^(\d+)-(\d+)/)[1] : '';
-  
-  if (currentExerciseHistory.length > 0) {
-      const lastSet = currentExerciseHistory.filter(s => s.exerciseTitle === currentEx.title).pop();
-      if (lastSet) {
-          lastWeight = lastSet.weight;
-          // Usa o último número de repetição logado
-          lastReps = lastSet.reps; 
-      }
-  }
-  logWeightInput.value = lastWeight;
-  logRepsInput.value = lastReps || '';
-}
-
-// --- Lógica do Timer e Séries ---
-
-async function handleMainButton() {
-  if (appMode === 'work') {
-    const currentEx = getCurrentExercise();
-    if (!currentEx) return;
-
-    if (currentSet <= currentEx.sets) {
-      await logSet(currentEx.title, currentEx.reps); // Passa o formato de reps esperado
-      
-      if (currentSet > currentEx.sets) {
-        
-        if (getCurrentBlock().type === 'superset' && currentExerciseInSupersetIndex < getCurrentBlock().exercises.length - 1) {
-            currentExerciseInSupersetIndex++; 
-            currentSet = 1; 
-            renderExercise(); 
-            return;
-        }
-        
-        startRest();
-        
-      } else {
-         renderExercise(); 
-      }
-      
-    } else {
-      await finishBlock();
-    }
-  } else {
-    skipRest();
-  }
-}
-
-async function logSet(title, expectedRepsString) {
-  const weight = parseFloat(logWeightInput.value) || 0;
-  const reps = parseInt(logRepsInput.value) || 0;
-  
-  if (weight === 0 || reps === 0) {
-      alert("Por favor, preencha o peso e as repetições (use 0 para peso corporal/isometria e 1 para falha/tempo).");
-      return; 
-  }
-
-  // Apenas tenta calcular 1RM se as reps logadas forem <= 12
-  const rm = (reps > 0 && reps <= 12) ? calculate1RM(weight, reps) : null; 
-  
-  const performedSet = { weight, reps, rm, exerciseTitle: title, setIndex: currentSet, expectedReps: expectedRepsString };
-  currentExerciseHistory.push(performedSet);
-  
-  await updatePR(title, performedSet);
-  
-  currentSet++;
-}
-
-function startRest() {
-  const currentBlock = getCurrentBlock();
-  const restTime = currentBlock.type === 'superset' ? currentBlock.rest : currentBlock.rest;
-  
-  appMode = 'rest';
-  remaining = restTime;
-  timerLabel.textContent = 'Descanso ☕';
-  startPauseBtn.textContent = 'Pular Descanso';
-  setIndicator.textContent = `Próxima: Série ${currentSet} / ${getCurrentExercise().sets}`;
-  
-  startTimer();
-}
-
-async function finishBlock() {
-  const currentBlock = getCurrentBlock();
-  
-  const entry = {
-    date: new Date().toISOString(),
-    workoutName: currentWorkout,
-    block: currentBlock,
-    sets_performed: currentExerciseHistory
-  };
-  history.push(entry);
-  await saveAsync(STORAGE_KEYS.HISTORY, history);
-  
-  renderProgressChart();
-  renderPRs();
-  
-  autoNext();
-}
-
-function startTimer(){ running=true; if(timer)clearInterval(timer); timer=setInterval(()=>{ if(remaining<=0){ clearInterval(timer); notifyEnd(); finishRest(); } else { remaining--; timerDisplay.textContent=formatTime(remaining); } },1000); }
-function pauseTimer(){ running=false; clearInterval(timer); }
-function skipRest(){ if(appMode==='rest') finishRest(); }
-function finishRest(){ appMode='work'; clearInterval(timer); remaining=0; timerDisplay.textContent=formatTime(0); timerLabel.textContent='Pronto para Série'; startPauseBtn.textContent='Concluir Série'; renderExercise(); }
-
-
-function notifyEnd(){ 
-  
-  if(navigator.vibrate) navigator.vibrate([200,100,200]);
-  
-  if (Notification.permission === 'granted') {
-    // Notificação simplificada, sem ícone externo
-    new Notification('Descanso Finalizado!', {
-      body: `Hora da série ${currentSet} / ${getCurrentExercise().sets}: ${getCurrentExercise().title}`,
-      vibrate: [200, 100, 200]
-    });
-  }
-}
-
-function autoNext(){ 
-  const len = WORKOUTS[currentWorkout].length;
-  if(loopMode || load(STORAGE_KEYS.LOOP_MODE,false)){ 
-    currentIndex = (currentIndex+1) % len; 
-  } else { 
-    if(currentIndex < len-1) currentIndex++; 
-    else {
-        currentIndex = len; 
-        renderExercise(); 
-        return;
-    }
-  }
-  save('currentIndex_'+currentWorkout,currentIndex); 
-  resetExerciseState();
-  renderExercise(); 
-}
-
-// --- Histórico e Estatísticas (Atualizado com 1RM) ---
-
-async function updatePR(title, performedSet){ 
-  const { weight, reps, rm } = performedSet;
-  
-  // Apenas registra PR de repetições se for uma contagem válida
-  if (reps > 0) {
-      const key_reps = `${title}_${reps}reps`;
-      // PR é por peso ou se o peso for o mesmo, se as reps forem maiores
-      if(!prs[key_reps] || weight > prs[key_reps].weight || (weight === prs[key_reps].weight && reps > prs[key_reps].reps)){ 
-        prs[key_reps] = {reps, weight, date: new Date().toISOString()}; 
-      }
-  }
-
-
-  if (rm) {
-      const key_rm = `${title}_1rm`;
-      if (!prs[key_rm] || rm > prs[key_rm].weight) {
-          prs[key_rm] = {reps: reps, weight: rm, date: new Date().toISOString(), type: '1RM Estimado'};
-      }
-  }
-  
-  await saveAsync(STORAGE_KEYS.PRS, prs);
-  renderPRs();
-}
-
-function renderPRs(){
-    let prsHtml = '<h3>Recordes Pessoais (PRs) 🏆</h3>';
-    const exercises = {};
-    
-    Object.keys(prs).forEach(key => {
-        const [title, suffix] = key.split('_');
-        if (!exercises[title]) exercises[title] = [];
-        
-        let label = '';
-        if (suffix.includes('reps')) {
-            label = `${prs[key].weight}kg @ ${prs[key].reps} reps`;
-        } else if (suffix === '1rm') {
-            label = `${prs[key].weight}kg (1RM Estimado)`;
-        }
-        
-        exercises[title].push({ label, date: prs[key].date });
-    });
-
-    for (const title in exercises) {
-        prsHtml += `<div style="margin-top: 10px; font-weight: 700; color: #fff;">${title}</div>`;
-        exercises[title].forEach(pr => {
-            prsHtml += `<div class="muted" style="font-size: 13px;">- ${pr.label} <span style="font-size: 11px;">(${new Date(pr.date).toLocaleDateString()})</span></div>`;
-        });
-    }
-
-    if (Object.keys(exercises).length === 0) {
-        prsHtml += '<div class="muted">Nenhum recorde registrado ainda.</div>';
-    }
-    
-    prsEl.innerHTML = prsHtml;
-}
-
-
-function renderProgressChart() {
-    if (progressChartInstance) progressChartInstance.destroy();
-    
-    const volumeData = {}; 
-    
-    history.forEach(entry => {
-        const date = entry.date.substring(0, 10);
-        let volume = 0;
-        
-        entry.sets_performed.forEach(set => {
-            // Volume = Peso x Reps. Para falha/tempo (reps = 0 ou string), o volume é 0.
-            if(set.reps && !isNaN(set.reps)){
-                volume += set.weight * set.reps;
-            }
-        });
-        
-        volumeData[date] = (volumeData[date] || 0) + volume;
-    });
-
-    const labels = Object.keys(volumeData).sort();
-    const data = labels.map(date => volumeData[date]);
-    
-    const ctx = progressChart.getContext('2d');
-    progressChartInstance = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Volume de Treino (kg)',
-                data: data,
-                backgroundColor: 'rgba(202, 167, 110, 0.2)',
-                borderColor: 'var(--accent)',
-                borderWidth: 2,
-                tension: 0.3,
-                fill: true
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
-                x: { grid: { display: false } }
-            },
-            plugins: { legend: { display: false } }
-        }
-    });
-}
-
-
-// --- Lógica do Calendário ---
-
-const dayNames = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-
-function renderCalendar() {
-    calendarDisplay.innerHTML = '';
-    const table = document.createElement('table');
-    table.style.width = '100%';
-    table.style.textAlign = 'center';
-    table.style.borderCollapse = 'collapse';
-    
-    const head = table.createTHead();
-    const body = table.createTBody();
-    
-    const headRow = head.insertRow();
-    dayNames.forEach(day => {
-        const th = document.createElement('th');
-        th.textContent = day;
-        th.style.color = 'var(--accent)';
-        th.style.padding = '8px 0';
-        headRow.appendChild(th);
-    });
-    
-    const bodyRow = body.insertRow();
-    dayNames.forEach((day, index) => {
-        const td = bodyRow.insertCell();
-        td.style.padding = '8px 0';
-        td.style.border = '1px solid var(--glass)';
-        
-        const currentAssignment = calendar[index] || '-';
-        td.textContent = currentAssignment.split(' ')[0].replace('🟥', 'A').replace('🟦', 'B').replace('🟩', 'C'); // Mostra apenas a letra inicial no calendário
-        
-        td.onclick = async () => {
-            const workoutNames = Object.keys(WORKOUTS);
-            const currentAssignment = calendar[index];
-            const currentIdx = workoutNames.indexOf(currentAssignment);
-            const nextIdx = (currentIdx + 1) % (workoutNames.length + 1); 
-            
-            if (nextIdx === workoutNames.length) {
-                delete calendar[index];
-            } else {
-                calendar[index] = workoutNames[nextIdx];
-            }
-            
-            await saveAsync(STORAGE_KEYS.CALENDAR, calendar); 
-            renderCalendar();
-            suggestWorkout();
-        };
-    });
-    
-    calendarDisplay.appendChild(table);
-}
-
-function suggestWorkout() {
-    const today = new Date().getDay(); 
-    const suggested = calendar[today];
-    
-    if (suggested) {
-        suggestedWorkoutDisplay.innerHTML = `Treino: **${suggested}** <button class="mini" style="margin-left: 8px;" onclick="setWorkout('${suggested}')">Iniciar</button>`;
-    } else {
-        suggestedWorkoutDisplay.textContent = 'Nenhum treino planejado para hoje.';
-    }
-}
-
-// --- Lógica da Biblioteca (Simplificada) ---
-
-const SIMPLE_EXERCISE_LIBRARY = [
-    {title:'Supino reto com barra', muscle:'Peito', description:'Foco peitoral maior. Siga o protocolo padrão.'},
-    {title:'Agachamento com barra', muscle:'Pernas', description:'Foco em quadríceps e glúteos. Mantenha boa profundidade.'},
-    {title:'Remada curvada com barra', muscle:'Costas', description:'Foco na dorsal. Puxe em direção ao umbigo.'},
-    {title:'Elevação lateral com halteres', muscle:'Ombros', description:'Foco no deltoide medial. Não balance o corpo.'},
-    {title:'Tríceps testa com barra/halter', muscle:'Tríceps', description:'Mantenha cotovelos fixos. Foco na cabeça longa.'},
-    {title:'Rosca direta com barra', muscle:'Bíceps', description:'Foco no pico do bíceps.'},
-    {title:'Stiff com barra', muscle:'Pernas', description:'Foco em posterior de coxa. Mantenha a coluna neutra.'},
-    {title:'Desenvolvimento militar', muscle:'Ombros', description:'Trabalha o deltoide frontal e medial.'},
-    {title:'Elevação de pernas deitado', muscle:'Abdômen', description:'Foco em abdominais inferiores.'},
-    {title:'Prancha isométrica', muscle:'Core', description:'Foco em estabilidade e abdômen.'},
-];
-
-function renderLibrary(query = '') {
-    libraryList.innerHTML = '';
-    const filtered = SIMPLE_EXERCISE_LIBRARY.filter(ex => 
-        ex.title.toLowerCase().includes(query.toLowerCase()) || 
-        ex.muscle.toLowerCase().includes(query.toLowerCase())
-    );
-
-    filtered.forEach(ex => {
-        const item = document.createElement('div');
-        item.className = 'library-item';
-        
-        // Conteúdo sem imagem: Título, Ícone (Emoji) e Descrição
-        item.innerHTML = `
-            <div class="library-item-content">
-                <div class="library-item-icon">💪</div>
-                <div>
-                    <div style="font-weight: 700; color: var(--accent);">${ex.title}</div>
-                    <div class="muted" style="font-size: 12px; margin-bottom: 4px;">Grupo: ${ex.muscle}</div>
-                    <div class="ex-meta">${ex.description}</div>
-                </div>
-            </div>
-            <button class="mini" style="margin-top: 8px; border: 1px solid var(--accent); color: var(--accent);" 
-                onclick="addExFromLibrary('${ex.title}')">Adicionar ao Treino Atual</button>
-        `;
-        libraryList.appendChild(item);
-    });
-    
-    if (filtered.length === 0) {
-        libraryList.innerHTML = '<div class="muted" style="padding: 12px;">Nenhum exercício encontrado.</div>';
-    }
-}
-
-function addExFromLibrary(title) {
-    // Cria um ID simples a partir do título para manter a estrutura do modelo
-    const id = title.replace(/\s/g, '-').toLowerCase();
-    
-    const newEx = {
-        type: 'standard', 
-        id: id,
-        title: title, 
-        sets: 3, 
-        reps: '10-12', 
-        rest: 60, 
-        weight: 0
+// Adiciona o "ouvinte" de evento
+window.addEventListener('DOMContentLoaded', () => {
+    const STORAGE_KEYS = {
+        WORKOUTS: 'workouts',
+        HISTORY: 'history',
+        PRS: 'prs',
+        CURRENT_WORKOUT: 'currentWorkoutName',
+        THEME: 'theme',
+        LOOP_MODE: 'loopMode',
+        CALENDAR: 'calendar'
     };
-    WORKOUTS[currentWorkout].push(newEx);
-    saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
-    renderList();
-    alert(`${title} adicionado ao ${currentWorkout}.`);
-    libraryModal.classList.remove('open');
-}
 
+    const DEFAULT_WORKOUTS = {
+      '🟥 TREINO A (Peito/Tríceps/Frontal)': [
+        {type: 'standard', id:'supino-reto-barra', title:'Supino reto com barra', sets: 4, reps:'10-12', rest:90, weight:20},
+        {type: 'standard', id:'supino-inclinado-halter', title:'Supino inclinado com halteres', sets: 3, reps:'12-15', rest:60, weight:10},
+        {type: 'standard', id:'flexao-braco', title:'Flexão de braço (militar/pés elevados)', sets: 3, reps:'Falha', rest:52, weight:0},
+        {type: 'standard', id:'triceps-testa', title:'Tríceps testa com barra/halter', sets: 3, reps:'10-12', rest:60, weight:8},
+        {type: 'standard', id:'mergulho-bancos', title:'Mergulho entre bancos/cadeiras', sets: 3, reps:'Falha', rest:60, weight:0},
+        {type: 'standard', id:'desenvolvimento-militar', title:'Desenvolvimento militar (barra ou halteres)', sets: 4, reps:'10-12', rest:60, weight:10},
+        {type: 'standard', id:'elevacao-frontal', title:'Elevação frontal com halteres', sets: 3, reps:'12-15', rest:45, weight:5},
+      ],
+      '🟦 TREINO B (Costas/Bíceps/Lateral-Post)': [
+        {type: 'standard', id:'remada-curvada-barra', title:'Remada curvada com barra', sets: 4, reps:'10-12', rest:90, weight:20},
+        {type: 'standard', id:'remada-unilateral-halter', title:'Remada unilateral com halter', sets: 3, reps:'12-15 por lado', rest:60, weight:10},
+        {type: 'standard', id:'barra-fixa', title:'Barra fixa (ou negativas)', sets: 4, reps:'Falha', rest:90, weight:0},
+        {type: 'standard', id:'rosca-direta', title:'Rosca direta com barra', sets: 3, reps:'10-12', rest:60, weight:10},
+        {type: 'standard', id:'rosca-martelo', title:'Rosca martelo com halteres', sets: 3, reps:'12', rest:45, weight:6},
+        {type: 'standard', id:'elevacao-lateral', title:'Elevação lateral com halteres', sets: 3, reps:'12-15', rest:37, weight:5},
+        {type: 'standard', id:'remada-alta-inclinada', title:'Remada alta inclinada (substitui elevação posterior)', sets: 3, reps:'12-15', rest:52, weight:8},
+      ],
+      '🟩 TREINO C (Pernas/Core/Panturrilha)': [
+        {type: 'standard', id:'agachamento-barra', title:'Agachamento com barra', sets: 4, reps:'15', rest:90, weight:20},
+        {type: 'standard', id:'agachamento-bulgaro', title:'Agachamento búlgaro/afundo com halteres', sets: 3, reps:'12 por perna', rest:60, weight:8},
+        {type: 'standard', id:'stiff-barra', title:'Stiff com barra', sets: 4, reps:'12-15', rest:60, weight:20},
+        {type: 'standard', id:'panturrilha-em-pe', title:'Elevação em pé com barra ou halteres', sets: 4, reps:'20-25', rest:45, weight:15},
+        {type: 'standard', id:'panturrilha-unilateral', title:'Elevação unilateral com halter', sets: 3, reps:'15-20 por perna', rest:37, weight:5},
+        {type: 'standard', id:'panturrilha-sentada-improvisada', title:'Panturrilha sentada improvisada', sets: 3, reps:'25-30', rest:30, weight:15},
+        {type: 'standard', id:'isometria-panturrilha', title:'Isometria na ponta dos pés', sets: 2, reps:'30-45s', rest:30, weight:0},
+        {type: 'standard', id:'elevacao-pernas', title:'Elevação de pernas deitado', sets: 3, reps:'15', rest:30, weight:0},
+        {type: 'standard', id:'crunch-halter', title:'Crunch com halter no peito', sets: 3, reps:'20', rest:30, weight:5},
+        {type: 'standard', id:'prancha-isométrica', title:'Prancha isométrica', sets: 3, reps:'45-60s', rest:30, weight:0},
+      ]
+    };
 
-// --- Event Listeners ---
+    const { get, set } = idbKeyval;
 
-openMenu.onclick = ()=> modal.classList.add('open'); 
-closeMenu.onclick=()=> modal.classList.remove('open'); 
-window.onclick=(e)=>{ if(e.target===modal) modal.classList.remove('open'); }
-
-openLibrary.onclick = ()=> { libraryModal.classList.add('open'); renderLibrary(); };
-closeLibrary.onclick=()=> libraryModal.classList.remove('open');
-librarySearch.oninput = (e) => renderLibrary(e.target.value);
-
-startPauseBtn.onclick = handleMainButton;
-
-// Botões de navegação
-prevBtn.onclick = prevExercise; nextBtn.onclick = nextExercise;
-prevFooter.onclick = prevExercise; nextFooter.onclick = nextExercise;
-resetBtn.onclick = ()=> { resetExerciseState(); renderExercise(); };
-
-function prevExercise(){
-    if (currentIndex > 0) currentIndex--;
-    else currentIndex = WORKOUTS[currentWorkout].length - 1; // Loop de volta
-    resetExerciseState();
-    renderExercise();
-}
-
-function nextExercise(){
-    currentIndex = (currentIndex + 1) % (WORKOUTS[currentWorkout].length || 1);
-    resetExerciseState();
-    renderExercise();
-}
-
-addExBtn.onclick = async ()=>{
-    const title = newTitle.value; const sets = parseInt(newSets.value);
-    const reps = newReps.value; const rest = parseInt(newRest.value);
-    const weight = parseFloat(newWeight.value);
-    
-    if(title && sets > 0 && reps && rest > 0){
-        WORKOUTS[currentWorkout].push({type:'standard', id:title.replace(/\s/g, '-').toLowerCase(), title, sets, reps, rest, weight});
-        await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
-        renderList();
-        newTitle.value = newSets.value = newReps.value = newRest.value = newWeight.value = '';
-    } else { alert('Preencha todos os campos do exercício corretamente.'); }
-}
-
-themeToggle.onclick = ()=>{
-    const currentTheme = document.body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.body.setAttribute('data-theme', newTheme);
-    save(STORAGE_KEYS.THEME, newTheme);
-}
-
-loopToggle.onchange = (e)=>{
-    loopMode = e.target.checked;
-    save(STORAGE_KEYS.LOOP_MODE, loopMode);
-}
-
-fullscreenBtn.onclick = () => {
-    const element = document.documentElement;
-    if (document.fullscreenElement) {
-        document.exitFullscreen();
-    } else if (element.requestFullscreen) {
-        element.requestFullscreen();
+    async function loadAsync(key, fallback){
+        try {
+            const v = await get(key);
+            return v !== undefined ? v : fallback;
+        } catch(e){
+            console.warn('IDB falhou, tentando localStorage', e);
+            try {
+                const ls = localStorage.getItem(key);
+                return ls ? JSON.parse(ls) : fallback;
+            } catch(err) {
+                return fallback;
+            }
+        }
     }
-};
+    async function saveAsync(key, val){
+        try {
+            await set(key, val);
+        } catch(e){
+            console.warn('IDB save falhou, salvando em localStorage', e);
+            try { localStorage.setItem(key, JSON.stringify(val)); } catch(err){}
+        }
+    }
+    function load(key, fallback){ try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch(e){ return fallback; } }
+    function save(key, val){ try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){} }
 
-// Autosave (Corrigido para IDB-Keyval)
-setInterval(async ()=>{ 
-    await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
-    await saveAsync(STORAGE_KEYS.CALENDAR, calendar);
-}, 15000); 
+    // State
+    let WORKOUTS = {};
+    let history = [];
+    let prs = {};
+    let calendar = {};
+    let currentWorkout = '';
+    let currentIndex = 0;
+    let currentSet = 1;
+    let appMode = 'work';
+    let currentExerciseHistory = [];
+    let timer = null;
+    let remaining = 0;
+    let running = false;
+    let loopMode = false;
+    let progressChartInstance = null;
 
-// Export/Import (Permanecem async e corretos)
-exportBtn.onclick = async ()=>{ 
-  const payload={
-      workouts: WORKOUTS, 
-      history: history, 
-      prs: prs, 
-      calendar: calendar
-  }; 
-  const blob = new Blob([JSON.stringify(payload, null, 2)],{type:'application/json'}); 
-  const url = URL.createObjectURL(blob); 
-  const a=document.createElement('a'); a.href=url; a.download='synapse_backup_'+(new Date()).toISOString().slice(0,10)+'.json'; a.click(); 
-  URL.revokeObjectURL(url); 
-}
+    // DOM refs
+    const modal = document.getElementById('modal'), libraryModal = document.getElementById('libraryModal');
+    const openMenu = document.getElementById('openMenu'), closeMenu = document.getElementById('closeMenu');
+    const openLibrary = document.getElementById('openLibrary'), closeLibrary = document.getElementById('closeLibrary');
+    const workoutButtons = document.getElementById('workoutButtons');
+    const currentWorkoutName = document.getElementById('currentWorkoutName'), currentExerciseTitle = document.getElementById('currentExerciseTitle'), currentExerciseMeta = document.getElementById('currentExerciseMeta');
+    const timerDisplay = document.getElementById('timerDisplay'), timerLabel = document.getElementById('timerLabel'), startPauseBtn = document.getElementById('startPauseBtn');
+    const setIndicator = document.getElementById('setIndicator'), logWeightInput = document.getElementById('logWeightInput'), logRepsInput = document.getElementById('logRepsInput');
+    const prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn'), resetBtn = document.getElementById('resetBtn');
+    const exerciseList = document.getElementById('exerciseList');
+    const prevFooter = document.getElementById('prevExerciseFooter'), nextFooter = document.getElementById('nextExerciseFooter');
+    const addExBtn = document.getElementById('addExBtn'), newTitle = document.getElementById('newTitle'), newSets = document.getElementById('newSets'), newReps = document.getElementById('newReps'), newRest = document.getElementById('newRest'), newWeight = document.getElementById('newWeight');
+    const progressChart = document.getElementById('progressChart'), prsEl = document.getElementById('prs');
+    const themeToggle = document.getElementById('themeToggle'), loopToggle = document.getElementById('loopToggle'), fullscreenBtn = document.getElementById('fullscreenBtn');
+    const exportBtn = document.getElementById('exportBtn'), importBtn = document.getElementById('importBtn');
+    const calendarDisplay = document.getElementById('calendarDisplay');
+    const suggestedWorkoutDisplay = document.getElementById('suggestedWorkoutDisplay');
+    const libraryList = document.getElementById('libraryList'), librarySearch = document.getElementById('librarySearch');
 
-importBtn.onclick = ()=>{ 
-  const input=document.createElement('input'); input.type='file'; input.accept='application/json'; 
-  input.onchange=(e)=>{ 
-    const f=e.target.files[0]; if(!f) return; 
-    const reader=new FileReader(); 
-    reader.onload=async (ev)=>{ 
-      try{ 
-        const obj = JSON.parse(ev.target.result); 
-        if(obj.workouts) WORKOUTS = obj.workouts; 
-        if(obj.history) history = obj.history; 
-        if(obj.prs) prs = obj.prs; 
-        if(obj.calendar) calendar = obj.calendar;
-        
-        // Salvamento assíncrono após importação
-        await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS); 
-        await saveAsync(STORAGE_KEYS.HISTORY, history); 
-        await saveAsync(STORAGE_KEYS.PRS, prs); 
+    (async function init(){
+        WORKOUTS = await loadAsync(STORAGE_KEYS.WORKOUTS, DEFAULT_WORKOUTS);
+        history = await loadAsync(STORAGE_KEYS.HISTORY, []);
+        prs = await loadAsync(STORAGE_KEYS.PRS, {});
+        calendar = await loadAsync(STORAGE_KEYS.CALENDAR, {});
+        currentWorkout = load(STORAGE_KEYS.CURRENT_WORKOUT, Object.keys(WORKOUTS)[0]);
+        currentIndex = load('currentIndex_'+currentWorkout, 0);
+        loopMode = load(STORAGE_KEYS.LOOP_MODE, false);
+        loopToggle.checked = !!loopMode;
+        document.body.setAttribute('data-theme', load(STORAGE_KEYS.THEME,'dark'));
+        Notification && Notification.requestPermission && Notification.requestPermission();
+        renderCalendar();
+        suggestWorkout();
+        renderWorkoutButtons();
+        renderList();
+        renderExercise();
+        renderProgressChart();
+        renderPRs();
+    })();
+
+    function calculate1RM(weight, reps) {
+        if (typeof reps !== 'number' || reps === 0 || reps > 12) return null;
+        return parseFloat((weight * (36 / (37 - reps))).toFixed(1));
+    }
+
+    function formatTime(s){ const m=Math.floor(s/60).toString().padStart(2,'0'); const sec=(s%60).toString().padStart(2,'0'); return m+':'+sec; }
+
+    async function setWorkout(name){
+      currentWorkout = name;
+      await saveAsync(STORAGE_KEYS.CURRENT_WORKOUT, name);
+      currentIndex = load('currentIndex_'+currentWorkout, 0);
+      resetExerciseState();
+      renderExercise();
+      renderList();
+      modal.classList.remove('open');
+    }
+
+    function getCurrentBlock(){ return (WORKOUTS[currentWorkout]||[])[currentIndex] || null; }
+    function getCurrentExercise(){ return getCurrentBlock() || null; }
+
+    function resetExerciseState(){
+      currentSet = 1;
+      currentExerciseHistory = [];
+      appMode = 'work';
+      if (timer) clearInterval(timer);
+      running = false;
+      remaining = 0;
+    }
+
+    function renderWorkoutButtons(){
+      workoutButtons.innerHTML = '';
+      Object.keys(WORKOUTS).forEach(name=>{
+        const b = document.createElement('button');
+        b.className = 'workout-btn';
+        b.textContent = name;
+        b.onclick = ()=> setWorkout(name);
+        workoutButtons.appendChild(b);
+      });
+    }
+
+    function highlightList(){
+        const items = exerciseList.querySelectorAll('.exercise');
+        items.forEach(el => el.classList.remove('active'));
+        const active = document.getElementById(`block-${currentIndex}`);
+        if (active) active.classList.add('active');
+    }
+
+    function renderList(){
+      exerciseList.innerHTML = '';
+      const list = WORKOUTS[currentWorkout] || [];
+      list.forEach((block, idx)=>{
+        const item = document.createElement('div');
+        item.className = 'exercise';
+        item.id = `block-${idx}`;
+        item.style.flexDirection = 'column';
+        item.style.alignItems = 'flex-start';
+        const left = document.createElement('div');
+        left.className = 'left';
+        const title = document.createElement('div');
+        title.className = 'ex-title';
+        title.textContent = block.title || ('Bloco ' + (idx+1));
+        const meta = document.createElement('div');
+        meta.className = 'ex-meta';
+        meta.textContent = `${block.sets || 1}x${block.reps || '-'} • ${block.rest || 0}s • ${block.weight||0}kg`;
+        left.appendChild(title);
+        left.appendChild(meta);
+        const right = document.createElement('div');
+        right.style.display = 'flex';
+        right.style.gap = '8px';
+        const goto = document.createElement('button');
+        goto.className = 'mini';
+        goto.textContent = 'Ir';
+        goto.onclick = ()=> { currentIndex = idx; resetExerciseState(); renderExercise(); };
+        const del = document.createElement('button');
+        del.className = 'mini';
+        del.textContent = 'Rem';
+        del.onclick = async ()=> {
+            if (!confirm('Remover exercício?')) return;
+            WORKOUTS[currentWorkout].splice(idx,1);
+            await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+            renderList();
+            renderExercise();
+        };
+        right.appendChild(goto);
+        right.appendChild(del);
+        item.appendChild(left);
+        item.appendChild(right);
+        exerciseList.appendChild(item);
+      });
+      highlightList();
+    }
+
+    function findLastSetForExercise(title){
+        for (let i = history.length -1; i >=0; i--){
+            const entry = history[i];
+            for (let j = entry.sets_performed.length -1; j >=0; j--){
+                const s = entry.sets_performed[j];
+                if (s.exerciseTitle === title) return s;
+            }
+        }
+        return null;
+    }
+
+    function renderExercise(){
+      const current = getCurrentExercise();
+      if (!current){
+          currentExerciseTitle.textContent = "Treino Concluído! 🎉";
+          currentExerciseMeta.textContent = "Parabéns. Escolha o próximo.";
+          setIndicator.textContent = "";
+          startPauseBtn.style.display = 'none';
+          return;
+      }
+      startPauseBtn.style.display = 'inline-block';
+      currentWorkoutName.textContent = currentWorkout;
+      currentExerciseTitle.textContent = current.title;
+      currentExerciseMeta.textContent = `${current.sets}x${current.reps} • Descanso: ${current.rest}s • ${current.weight}kg`;
+      save('currentIndex_'+currentWorkout, currentIndex);
+      appMode = 'work';
+      running = false;
+      if (timer) clearInterval(timer);
+      setIndicator.textContent = `Série ${currentSet} / ${current.sets}`;
+      timerDisplay.textContent = formatTime(0);
+      timerLabel.textContent = 'Pronto para Série';
+      startPauseBtn.textContent = 'Concluir Série';
+      let lastWeight = current.weight || 0;
+      let lastReps = '';
+      const lastSet = findLastSetForExercise(current.title);
+      if (lastSet){
+          lastWeight = lastSet.weight || lastWeight;
+          lastReps = lastSet.reps || '';
+      } else {
+          // extract numeric from reps range
+          const m = String(current.reps).match(/^(\d+)/);
+          lastReps = m ? m[1] : '';
+      }
+      logWeightInput.value = lastWeight;
+      logRepsInput.value = lastReps;
+      renderList();
+    }
+
+    async function handleMainButton(){
+      if (appMode === 'work'){
+        const current = getCurrentExercise();
+        if (!current) return;
+        if (currentSet <= current.sets){
+            await logSet(current.title, current.reps);
+            // after logging, if still have sets, start rest; else finish block
+            if (currentSet <= current.sets){
+                startRest();
+            } else {
+                await finishBlock();
+            }
+        } else {
+            await finishBlock();
+        }
+      } else {
+        skipRest();
+      }
+    }
+
+    async function logSet(title, expectedRepsString){
+      const weight = parseFloat(logWeightInput.value) || 0;
+      const reps = parseInt(logRepsInput.value) || 0;
+      if (weight === 0 && String(expectedRepsString).toLowerCase().includes('falha') === false && !String(expectedRepsString).includes('s') && reps === 0){
+          // Allow weight 0 when bodyweight/exercises. But require reps if not time/falha.
+          // If user left both empty, prompt.
+          if (!confirm('Peso ou repetições não preenchidos. Confirmar gravação?')) return;
+      }
+      const rm = (reps > 0 && reps <= 12) ? calculate1RM(weight, reps) : null;
+      const performedSet = { weight, reps, rm, exerciseTitle: title, setIndex: currentSet, expectedReps: expectedRepsString, date: new Date().toISOString() };
+      currentExerciseHistory.push(performedSet);
+      await updatePR(title, performedSet);
+      currentSet++;
+    }
+
+    function startRest(){
+      const current = getCurrentExercise();
+      const restTime = current && current.rest ? current.rest : 60;
+      appMode = 'rest';
+      remaining = restTime;
+      timerLabel.textContent = 'Descanso ☕';
+      startPauseBtn.textContent = 'Pular Descanso';
+      setIndicator.textContent = `Próxima: Série ${currentSet} / ${current ? current.sets : 1}`;
+      startTimer();
+    }
+
+    async function finishBlock(){
+      const current = getCurrentBlock();
+      const entry = {
+        date: new Date().toISOString(),
+        workoutName: currentWorkout,
+        block: current,
+        sets_performed: currentExerciseHistory.slice()
+      };
+      history.push(entry);
+      await saveAsync(STORAGE_KEYS.HISTORY, history);
+      // clear current exercise history after saving
+      currentExerciseHistory = [];
+      renderProgressChart();
+      renderPRs();
+      autoNext();
+    }
+
+    function startTimer(){ running=true; if(timer) clearInterval(timer); timer=setInterval(()=>{ if(remaining<=0){ clearInterval(timer); notifyEnd(); finishRest(); } else { remaining--; timerDisplay.textContent = formatTime(remaining); } },1000); }
+    function pauseTimer(){ running=false; clearInterval(timer); }
+    function skipRest(){ if(appMode==='rest') finishRest(); }
+    function finishRest(){ appMode='work'; clearInterval(timer); remaining=0; timerDisplay.textContent=formatTime(0); timerLabel.textContent='Pronto para Série'; startPauseBtn.textContent='Concluir Série'; renderExercise(); }
+
+    function notifyEnd(){
+      if(navigator.vibrate) navigator.vibrate([200,100,200]);
+      if (Notification && Notification.permission === 'granted') {
+        new Notification('Descanso Finalizado!', { vibrate: [200,100,200] });
+      }
+    }
+
+    function autoNext(){
+      const len = (WORKOUTS[currentWorkout] || []).length;
+      if (!len) {
+          currentIndex = 0;
+          renderExercise();
+          return;
+      }
+      if(loopMode || load(STORAGE_KEYS.LOOP_MODE,false)){
+        currentIndex = (currentIndex + 1) % len;
+      } else {
+        if (currentIndex < len-1) currentIndex++;
+        else currentIndex = len-1; // stay at last
+      }
+      save('currentIndex_'+currentWorkout, currentIndex);
+      resetExerciseState();
+      renderExercise();
+    }
+
+    async function updatePR(title, performedSet){
+      const { weight, reps, rm } = performedSet;
+      const now = new Date().toISOString();
+      if (reps > 0){
+          const key_reps = `${title}_${reps}reps`;
+          if (!prs[key_reps] || weight > prs[key_reps].weight || (weight === prs[key_reps].weight && reps > prs[key_reps].reps)){
+              prs[key_reps] = { weight, reps, date: now };
+          }
+      }
+      if (rm){
+          const key_rm = `${title}_1rm`;
+          if (!prs[key_rm] || rm > prs[key_rm].weight){
+              prs[key_rm] = { weight: rm, reps: 1, date: now, is1RM: true };
+          }
+      }
+      await saveAsync(STORAGE_KEYS.PRS, prs);
+      renderPRs();
+    }
+
+    function renderPRs(){
+        let html = '<h3>Recordes Pessoais (PRs) 🏆</h3>';
+        const grouped = {};
+        Object.keys(prs).forEach(key=>{
+            const parts = key.split('_');
+            const title = parts.slice(0, -1).join('_') || parts[0];
+            if (!grouped[title]) grouped[title] = [];
+            const data = prs[key];
+            if (key.endsWith('1rm')) {
+                grouped[title].push({ label: `${data.weight}kg (1RM)`, date: data.date });
+            } else {
+                grouped[title].push({ label: `${data.weight}kg @ ${data.reps} reps`, date: data.date });
+            }
+        });
+        if (Object.keys(grouped).length === 0){
+            html += '<div class="muted">Nenhum recorde registrado ainda.</div>';
+        } else {
+            Object.keys(grouped).forEach(title=>{
+                html += `<div style="margin-top:10px;font-weight:700;color:#fff">${title}</div>`;
+                grouped[title].forEach(pr=>{
+                    html += `<div class="muted" style="font-size:13px">- ${pr.label} <span style="font-size:11px">(${new Date(pr.date).toLocaleDateString()})</span></div>`;
+                });
+            });
+        }
+        prsEl.innerHTML = html;
+    }
+
+    function renderProgressChart(){
+        if (progressChartInstance) progressChartInstance.destroy();
+        const volumeData = {};
+        history.forEach(entry=>{
+            const date = entry.date.substring(0,10);
+            let volume = 0;
+            entry.sets_performed.forEach(s=>{
+                const reps = parseInt(s.reps) || 0;
+                const weight = parseFloat(s.weight) || 0;
+                volume += reps * weight;
+            });
+            volumeData[date] = (volumeData[date] || 0) + volume;
+        });
+        const labels = Object.keys(volumeData).sort();
+        const data = labels.map(d => volumeData[d]);
+        const ctx = progressChart.getContext('2d');
+        progressChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Volume (kg x reps)',
+                    data,
+                    borderColor: '#caa76e',
+                    backgroundColor: 'rgba(202,167,110,0.12)',
+                    tension: 0.25,
+                    fill: true,
+                    pointRadius: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { x: { grid: { display: false }, ticks: { color: 'var(--muted)' } }, y: { ticks: { color: 'var(--muted)' } } },
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+
+    const dayNames = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+    function renderCalendar(){
+        calendarDisplay.innerHTML = '';
+        const table = document.createElement('table');
+        table.style.width='100%'; table.style.textAlign='center'; table.style.borderCollapse='collapse';
+        const head = table.createTHead(); const body = table.createTBody();
+        const headRow = head.insertRow();
+        dayNames.forEach(day => {
+            const th = document.createElement('th');
+            th.textContent = day; th.style.color='var(--accent)'; th.style.padding='8px 0';
+            headRow.appendChild(th);
+        });
+        const bodyRow = body.insertRow();
+        dayNames.forEach((d,i) => {
+            const td = bodyRow.insertCell();
+            td.style.padding='8px 0'; td.style.border='1px solid var(--glass)';
+            const currentAssignment = calendar[i] || '-';
+            td.textContent = currentAssignment === '-' ? '-' : currentAssignment.split(' ')[0].replace('🟥','A').replace('🟦','B').replace('🟩','C');
+            td.onclick = async () => {
+                const choice = prompt('Atribuir treino para ' + dayNames[i] + ' (use nome exato ou vazio para remover). Treinos disponíveis:\n' + Object.keys(WORKOUTS).join('\n'), calendar[i] || '');
+                if (choice === null) return;
+                if (choice.trim() === '') { delete calendar[i]; } else { calendar[i] = choice.trim(); }
+                await saveAsync(STORAGE_KEYS.CALENDAR, calendar);
+                renderCalendar();
+                suggestWorkout();
+            };
+            bodyRow.appendChild(td);
+        });
+        calendarDisplay.appendChild(table);
+    }
+
+    function suggestWorkout(){
+        const today = new Date().getDay();
+        const suggested = calendar[today];
+        if (suggested){
+            suggestedWorkoutDisplay.innerHTML = `Treino: <strong>${suggested}</strong> <button class="mini" style="margin-left:8px" id="startSuggested">Iniciar</button>`;
+            document.getElementById('startSuggested').onclick = ()=> setWorkout(suggested);
+        } else {
+            suggestedWorkoutDisplay.textContent = 'Nenhum treino planejado para hoje.';
+        }
+    }
+
+    const SIMPLE_EXERCISE_LIBRARY = [
+        {title:'Supino reto com barra', muscle:'Peito', description:'Foco peitoral maior. Siga o protocolo padrão.'},
+        {title:'Agachamento com barra', muscle:'Pernas', description:'Foco em quadríceps e glúteos. Mantenha boa profundidade.'},
+        {title:'Remada curvada com barra', muscle:'Costas', description:'Foco na dorsal. Puxe em direção ao umbigo.'},
+        {title:'Elevação lateral com halteres', muscle:'Ombros', description:'Foco no deltoide medial. Não balance o corpo.'},
+        {title:'Tríceps testa com barra/halter', muscle:'Tríceps', description:'Mantenha cotovelos fixos. Foco na cabeça longa.'},
+        {title:'Rosca direta com barra', muscle:'Bíceps', description:'Foco no pico do bíceps.'},
+        {title:'Stiff com barra', muscle:'Pernas', description:'Foco em posterior de coxa. Mantenha a coluna neutra.'},
+        {title:'Desenvolvimento militar', muscle:'Ombros', description:'Trabalha o deltoide frontal e medial.'},
+        {title:'Elevação de pernas deitado', muscle:'Abdômen', description:'Foco em abdominais inferiores.'},
+        {title:'Prancha isométrica', muscle:'Core', description:'Foco em estabilidade e abdômen.'},
+    ];
+
+    function renderLibrary(query = ''){
+        libraryList.innerHTML = '';
+        const filtered = SIMPLE_EXERCISE_LIBRARY.filter(ex => ex.title.toLowerCase().includes(query.toLowerCase()) || ex.muscle.toLowerCase().includes(query.toLowerCase()));
+        filtered.forEach(ex=>{
+            const item = document.createElement('div');
+            item.className = 'library-item';
+            item.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-weight:700">${ex.title}</div>
+                  <div class="muted" style="font-size:13px">${ex.muscle} — ${ex.description}</div>
+                </div>
+                <div>
+                  <button class="mini add-lib">Adicionar</button>
+                </div>
+            </div>`;
+            item.querySelector('.add-lib').onclick = ()=> addExFromLibrary(ex.title);
+            libraryList.appendChild(item);
+        });
+        if (filtered.length === 0) libraryList.innerHTML = '<div class="muted" style="padding:12px">Nenhum exercício encontrado.</div>';
+    }
+
+    function addExFromLibrary(title){
+        const id = title.replace(/\s/g,'-').toLowerCase();
+        const newEx = { type:'standard', id, title, sets:3, reps:'10-12', rest:60, weight:0 };
+        WORKOUTS[currentWorkout] = WORKOUTS[currentWorkout] || [];
+        WORKOUTS[currentWorkout].push(newEx);
+        saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+        renderList();
+        alert(`${title} adicionado ao ${currentWorkout}.`);
+        libraryModal.classList.remove('open');
+    }
+
+    openMenu.onclick = ()=> modal.classList.add('open');
+    closeMenu.onclick = ()=> modal.classList.remove('open');
+    window.onclick = (e)=>{ if (e.target === modal) modal.classList.remove('open'); }
+    openLibrary.onclick = ()=> { libraryModal.classList.add('open'); renderLibrary(); };
+    closeLibrary.onclick = ()=> libraryModal.classList.remove('open');
+    librarySearch.oninput = (e)=> renderLibrary(e.target.value);
+    startPauseBtn.onclick = handleMainButton;
+    prevBtn.onclick = prevExercise; nextBtn.onclick = nextExercise;
+    prevFooter.onclick = prevExercise; nextFooter.onclick = nextExercise;
+    resetBtn.onclick = ()=> { resetExerciseState(); renderExercise(); };
+
+    function prevExercise(){
+        if ((WORKOUTS[currentWorkout]||[]).length === 0) return;
+        if (currentIndex > 0) currentIndex--;
+        else currentIndex = WORKOUTS[currentWorkout].length - 1;
+        resetExerciseState(); renderExercise();
+    }
+    function nextExercise(){
+        if ((WORKOUTS[currentWorkout]||[]).length === 0) return;
+        currentIndex = (currentIndex + 1) % (WORKOUTS[currentWorkout].length || 1);
+        resetExerciseState(); renderExercise();
+    }
+
+    addExBtn.onclick = async ()=>{
+        const title = newTitle.value; const sets = parseInt(newSets.value);
+        const reps = newReps.value; const rest = parseInt(newRest.value);
+        const weight = parseFloat(newWeight.value);
+        if (title && sets > 0 && reps && rest > 0){
+            WORKOUTS[currentWorkout] = WORKOUTS[currentWorkout] || [];
+            WORKOUTS[currentWorkout].push({type:'standard', id:title.replace(/\s/g,'-').toLowerCase(), title, sets, reps, rest, weight});
+            await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+            renderList();
+            newTitle.value = newSets.value = newReps.value = newRest.value = newWeight.value = '';
+        } else { alert('Preencha todos os campos do exercício corretamente.'); }
+    }
+
+    themeToggle.onclick = ()=>{
+        const currentTheme = document.body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        save(STORAGE_KEYS.THEME, newTheme);
+    }
+
+    loopToggle.onchange = (e)=>{
+        loopMode = e.target.checked;
+        save(STORAGE_KEYS.LOOP_MODE, loopMode);
+    }
+
+    fullscreenBtn.onclick = () => {
+        const element = document.documentElement;
+        if (document.fullscreenElement) document.exitFullscreen();
+        else if (element.requestFullscreen) element.requestFullscreen();
+    };
+
+    setInterval(async ()=>{
+        await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
         await saveAsync(STORAGE_KEYS.CALENDAR, calendar);
-        
-        renderCalendar(); suggestWorkout();
-        renderList(); renderExercise(); renderProgressChart(); renderPRs(); 
-        alert('Importado com sucesso. Recarregue a página se houver erros visuais.'); 
-      } catch(err){ alert('Arquivo inválido: ' + err.message) } 
-    }; 
-    reader.readAsText(f); 
-  }; 
-  input.click(); 
-}
+    }, 15000);
 
-// --- Garantia de Salvamento ao Fechar/Mudar de Aba ---
-window.addEventListener('beforeunload', async (event) => {
-    // Salva o histórico e os PRs (que são atualizados durante o treino)
-    await saveAsync(STORAGE_KEYS.HISTORY, history); 
-    await saveAsync(STORAGE_KEYS.PRS, prs);
-    
-    // Salva o estado atual do treino
-    await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
-    await saveAsync(STORAGE_KEYS.CALENDAR, calendar);
-    
-    // O navegador moderno pode ignorar o 'await' no beforeunload, mas a maioria tenta
-    // O salvamento por intervalo e por ação já cobrem a maioria dos casos.
-});
-// ----------------------------------------------------
+    exportBtn.onclick = async ()=>{
+      const payload = { workouts: WORKOUTS, history, prs, calendar };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'synapse_backup_'+(new Date()).toISOString().slice(0,10)+'.json'; a.click();
+      URL.revokeObjectURL(url);
+    };
 
+    importBtn.onclick = ()=>{
+      const input = document.createElement('input'); input.type='file'; input.accept='application/json';
+      input.onchange = (e)=>{
+        const f = e.target.files[0]; if(!f) return;
+        const reader = new FileReader();
+        reader.onload = async (ev)=>{
+            try {
+                const parsed = JSON.parse(ev.target.result);
+                if (parsed.workouts) WORKOUTS = parsed.workouts;
+                if (parsed.history) history = parsed.history;
+                if (parsed.prs) prs = parsed.prs;
+                if (parsed.calendar) calendar = parsed.calendar;
+                await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+                await saveAsync(STORAGE_KEYS.HISTORY, history);
+                await saveAsync(STORAGE_KEYS.PRS, prs);
+                await saveAsync(STORAGE_KEYS.CALENDAR, calendar);
+                renderWorkoutButtons(); renderList(); renderExercise(); renderProgressChart(); renderPRs(); renderCalendar();
+                alert('Importação concluída.');
+            } catch(err){ alert('Erro ao importar arquivo: ' + err.message); }
+        };
+        reader.readAsText(f);
+      };
+      input.click();
+    };
+
+    window.addEventListener('beforeunload', async (event) => {
+        await saveAsync(STORAGE_KEYS.HISTORY, history);
+        await saveAsync(STORAGE_KEYS.PRS, prs);
+        await saveAsync(STORAGE_KEYS.WORKOUTS, WORKOUTS);
+        await saveAsync(STORAGE_KEYS.CALENDAR, calendar);
+    });
+
+}); // <-- FECHA O addEventListener('DOMContentLoaded', ...)
 </script>
 </body>
 </html>
